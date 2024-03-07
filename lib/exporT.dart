@@ -1,0 +1,13 @@
+export 'home.dart';
+export 'shop.dart';
+export 'carous.dart';
+export 'in.dart';
+export 'signin.dart';
+export 'all.dart';
+export 'mycharts/pie.dart';
+export 'mycharts/pie2.dart';
+export 'mycharts/pie3.dart';
+export 'login.dart';
+export 'vot.dart';
+export 'profile.dart';
+export 'curved.dart';
