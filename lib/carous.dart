@@ -84,9 +84,9 @@ class _CarPolState extends State<CarPol> {
                         child: Text(
                           'Explore',
                           style: TextStyle(
-                              fontFamily: 'AmaticSC-Bold',
+                              fontFamily: 'Anta',
                               color: Colors.white,
-                              fontSize: 20,
+                              fontSize: 20,letterSpacing: 7,
                               fontWeight: FontWeight.bold),
                         ),
                       ))),
