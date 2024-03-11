@@ -168,7 +168,7 @@ class _LogInStateState extends State<LogInState> {
                                 if (value?.isEmpty ?? true) {
                                   return 'enter  name or email';
                                 }
-                                if (!_isemail(value!) && !_isname(value)) {
+                                if (_isemail(value!) && !_isname(value)) {
                                   return 'enter valid name or email';
                                 }
                                 return null;

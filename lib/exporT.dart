@@ -11,3 +11,4 @@ export 'login.dart';
 export 'vot.dart';
 export 'profile.dart';
 export 'curved.dart';
+export'splash.dart';

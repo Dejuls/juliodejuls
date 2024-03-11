@@ -125,15 +125,17 @@ class GNavBar extends StatelessWidget {
       height: 60,
       child: GNav(
         gap: 8,
-        tabBackgroundColor: Colors.lightBlueAccent.shade100,
-        backgroundColor: Colors.black87,
-        activeColor: Colors.white,
-        color: Colors.white,
+        tabBackgroundColor: Color(0xffe8bab7),
+        // backgroundColor: const Color(0xffead4d3),
+        activeColor: Color(0xff985a56),
+        color: Color(0xff985a56),
         padding: EdgeInsets.all(12),
         tabs: [
           GButton(
             icon: Icons.home,
-            text: 'home',
+            text: 'Home',
+            iconSize: 26,
+            textStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             onPressed: () {
               Navigator.push(
                   context,
@@ -145,18 +147,26 @@ class GNavBar extends StatelessWidget {
           GButton(
             icon: LineIcons.heart,
             text: 'favs',
+            iconSize: 26,
+            textStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
           GButton(
             icon: LineIcons.cog,
             text: 'Settings',
+            iconSize: 26,
+            textStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
           GButton(
             icon: LineIcons.user,
             text: 'User',
+            iconSize: 26,
+            textStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
           GButton(
             icon: Icons.question_mark_rounded,
             text: 'Report',
+            iconSize: 26,
+            textStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
         ],
       ),
@@ -594,6 +604,46 @@ class _SideNavBarState extends State<SideNavBar> {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class Search extends StatelessWidget {
+  const Search({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 50,
+      padding: EdgeInsets.only(top: 0),
+      margin: EdgeInsets.symmetric(vertical: 20),
+      width: MediaQuery.of(context).size.width * .99,
+      decoration: BoxDecoration(
+          color: Color(0xffead4d3), borderRadius: BorderRadius.circular(20)),
+      child: TextFormField(
+        style: TextStyle(fontFamily: 'Anta', color: Colors.blue, fontSize: 25),
+        cursorHeight: 21,
+        decoration: InputDecoration(
+          floatingLabelBehavior: FloatingLabelBehavior.never,
+          label: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Search',
+                style: TextStyle(fontSize: 27),
+              ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width * .2,
+              ),
+              Icon(Icons.search_rounded, size: 30),
+            ],
+          ),
+          enabledBorder: InputBorder.none,
+          focusedBorder: InputBorder.none,
+          errorBorder: InputBorder.none,
+          contentPadding: EdgeInsets.only(left: 20, bottom: 5),
         ),
       ),
     );

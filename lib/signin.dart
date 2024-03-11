@@ -72,14 +72,23 @@ class _SignInState extends State<SignIn> {
                   radias: 80,
                 ),
 
-                Text(
-                  'Sign Up Today',
-                  style: TextStyle(
-                      fontFamily: 'ShadowsIntoLight',
-                      fontSize: 30,
-                      color: Color(0xffa84f48),
-                      letterSpacing: 3,
-                      fontWeight: FontWeight.w900),
+                Container(
+                  width: MediaQuery.of(context).size.width * .7,
+                  padding: EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                      color: Colors.white70,
+                      borderRadius: BorderRadius.circular(20)),
+                  child: Center(
+                    child: Text(
+                      '\tSign Up Today',
+                      style: TextStyle(
+                          fontFamily: 'ShadowsIntoLight',
+                          fontSize: 30,
+                          color: Color(0xffa84f48),
+                          letterSpacing: 3,
+                          fontWeight: FontWeight.w900),
+                    ),
+                  ),
                 ),
                 SizedBox(
                   height: 10,
@@ -114,8 +123,8 @@ class _SignInState extends State<SignIn> {
                               textInputAction: TextInputAction.done,
                               controller: _username,
                               decoration: InputDecoration(
-                                contentPadding:
-                                EdgeInsets.only(left: 18, top: 5),
+                                contentPadding: EdgeInsets.only(
+                                    left: 18, bottom: 15, top: 2),
                                 prefixIcon: Icon(
                                   LineIcons.user,
                                   size: 23,
@@ -182,8 +191,8 @@ class _SignInState extends State<SignIn> {
                                     () => email = value,
                               ),
                               decoration: InputDecoration(
-                                contentPadding:
-                                EdgeInsets.only(left: 18, top: 10),
+                                contentPadding: EdgeInsets.only(
+                                    left: 18, bottom: 15, top: 2),
                                 prefixIcon: Icon(
                                   LineIcons.envelope,
                                   size: 23,
@@ -246,8 +255,8 @@ class _SignInState extends State<SignIn> {
                               textAlign: TextAlign.center,
                               controller: _pswd,
                               decoration: InputDecoration(
-                                contentPadding:
-                                EdgeInsets.only(left: 18, top: 15),
+                                contentPadding: EdgeInsets.only(
+                                    left: 18, bottom: 1, top: 8),
                                 prefixIcon: Icon(
                                   LineIcons.lock,
                                   size: 23,
@@ -290,8 +299,14 @@ class _SignInState extends State<SignIn> {
                                   return 'password must be atleast 8 characters';
                                 }
                                 RegExp _spechars =
-                                RegExp(r'[,./\;<>?:"|{}{}[]*&0-9^%$#@!]');
+                                RegExp(r'[!@#$+-/;%^&*(),.?":{}|<>]');
                                 if (!_spechars.hasMatch(value)) {
+                                  return 'password must contain a two character or number';
+                                }
+                                RegExp allters= RegExp(r'[a-zA_Z0-9]');
+                                int charcount =allters
+                                    .allMatches(value).length;
+                                if (charcount < 2) {
                                   return 'password must contain atleast two characters or numbers';
                                 }
                                 return null;
@@ -319,8 +334,8 @@ class _SignInState extends State<SignIn> {
                                   color: Colors.blue),
                               textAlign: TextAlign.center,
                               decoration: InputDecoration(
-                                contentPadding:
-                                EdgeInsets.only(left: 18, top: 15),
+                                contentPadding: EdgeInsets.only(
+                                    left: 18, bottom: 15, top: 2),
                                 prefixIcon: Icon(
                                   LineIcons.lockOpen,
                                   size: 23,
