@@ -257,37 +257,6 @@ class _ConTesTantState extends State<ConTesTant> {
   }
 }
 
-void ShowOption(BuildContext context) {
-  showModalBottomSheet(
-      context: context,
-      builder: (builder) {
-        return Container(
-          height: MediaQuery.of(context).size.height / 4,
-          width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
-            color: Colors.white,
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              IconButton(
-                  onPressed: () {},
-                  icon: Icon(
-                    Icons.photo_outlined,
-                    size: 40,
-                  )),
-              IconButton(
-                  onPressed: () {},
-                  icon: Icon(
-                    Icons.camera_alt_outlined,
-                    size: 40,
-                  )),
-            ],
-          ),
-        );
-      });
-}
-
 class AvaTar extends StatefulWidget {
   double? radias;
   AvaTar({super.key, this.radias});
