@@ -66,7 +66,10 @@ flutter:
         - asset: fontisi/Tangerine-Regular.ttf
         - asset: fontisi/Tangerine-Bold.ttf
     #         weight: 700
-
+    - family: Tangerine-Bold
+      fonts:
+        - asset: fontisi/Tangerine-Bold.ttf
+    #         weight: 700
     - family: AmatiSC
       fonts:
         - asset: fontisi/AmaticSC-Regular.ttf

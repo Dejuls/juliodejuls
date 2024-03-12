@@ -17,6 +17,7 @@ class _CarPolState extends State<CarPol> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        // backgroundColor: Colors.grey[300],
         drawer: SideNavBar(),
         bottomNavigationBar: GNavBar(),
         body: CustomScrollView(
@@ -45,7 +46,7 @@ class _CarPolState extends State<CarPol> {
                   title: Text(
                     'Home',
                     style: TextStyle(
-                        color: Colors.white,
+                        color: Color(0xff985a56),
                         fontSize: 40,
                         fontWeight: FontWeight.bold),
                   ),
@@ -56,7 +57,11 @@ class _CarPolState extends State<CarPol> {
                         onPressed: () {
                           Navigator.pop(context);
                         },
-                        icon: Icon(Icons.notifications)),
+                        icon: Icon(
+                          size: 35,
+                          Icons.notifications,
+                          color: Color(0xff985a56),
+                        )),
                     SizedBox(
                       width: 15,
                     ),
@@ -65,13 +70,17 @@ class _CarPolState extends State<CarPol> {
                           Navigator.push(context,
                               MaterialPageRoute(builder: (context) => SIn()));
                         },
-                        icon: Icon(EvaIcons.personOutline)),
+                        icon: Icon(
+                          EvaIcons.personOutline,
+                          size: 35,
+                          color: Color(0xff985a56),
+                        )),
                     SizedBox(
                       width: 10,
                     )
                   ],
                   centerTitle: true,
-                  backgroundColor: Color(0xff985a56),
+                  backgroundColor: Color(0xffe8bab7),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(0),
@@ -85,8 +94,9 @@ class _CarPolState extends State<CarPol> {
                           'Explore',
                           style: TextStyle(
                               fontFamily: 'Anta',
-                              color: Colors.white,
-                              fontSize: 20,letterSpacing: 7,
+                              color: Color(0xff985a56),
+                              fontSize: 20,
+                              letterSpacing: 7,
                               fontWeight: FontWeight.bold),
                         ),
                       ))),
@@ -101,12 +111,15 @@ class _CarPolState extends State<CarPol> {
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(20),
                         topRight: Radius.circular(20)),
-                    color: Colors.white,
+                    color: Colors.grey[100],
                   ),
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
-                        Search(),
+                        Search(
+                          margin: 4.0,
+                        ),
+
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
@@ -131,19 +144,25 @@ class _CarPolState extends State<CarPol> {
                           height: 8,
                         ),
                         Container(
-                          padding: EdgeInsets.only(left: 10, top: 8, bottom: 8),
-                          height: 142,
-                          width: double.maxFinite,
+                          margin: EdgeInsets.only(left: 3, right: 3),
+                          padding: EdgeInsets.only(
+                              left: 10, top: 8, bottom: 8, right: 3),
+                          height: 148,
+                          width: MediaQuery.of(context).size.width,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
-                            color: Color(0xffead4d3),
+                            color: Color(0xffead4d3).withOpacity(0.7),
                           ),
                           child: Flexible(
                             child: Text(
-                                style: TextStyle(fontSize: 18),
+                                style: TextStyle(
+                                    fontFamily: 'BodoniModa',
+                                    fontSize: 18,
+                                    color: Color(0xff985a56),
+                                    fontWeight: FontWeight.bold),
                                 'De juls is a versatile mobile application designed to\n' +
                                     "Whether you're a seasoned user or new to Dejuls," +
-                                    'our intuitive interface and powerful features make it easy for you to'),
+                                    ' our intuitive interface and features that make it easy for you to'),
                           ),
                         ),
                         SizedBox(
@@ -169,12 +188,34 @@ class _CarPolState extends State<CarPol> {
                           height: 6,
                         ),
                         Container(
-                          height: 100,
-                          width: double.maxFinite,
+                          padding: EdgeInsets.only(
+                              left: 10, top: 8, bottom: 8, right: 1),
+                          margin: EdgeInsets.only(left: 4, right: 4),
+                          height: 150,
+                          width: MediaQuery.of(context).size.width,
+                          decoration: BoxDecoration(
+                              color: Colors.grey[200],
+                              borderRadius: BorderRadius.circular(20),
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.white,
+                                    offset: Offset(5, -5),
+                                    spreadRadius: 3,
+                                    blurRadius: .1),
+                                BoxShadow(
+                                    color: Colors.white,
+                                    offset: Offset(-5, 5),
+                                    spreadRadius: 3,
+                                    blurRadius: 0.1),
+                              ]),
                           child: Flexible(
                             child: Text(
-                                style: TextStyle(fontSize: 18),
-                                'Feature 1: Brief description of feature 1 and its benefit\n' +
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontFamily: 'BodoniModa',
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                'Feature 1: Brief description of feature 1 \tand its benefit\n' +
                                     'Feature 2: Brief description of feature 2 and its benefit\n' +
                                     'Feature 3: Brief description of feature 3 and its benefit'),
                           ),
@@ -202,16 +243,23 @@ class _CarPolState extends State<CarPol> {
                           height: 6,
                         ),
                         Container(
-                          padding: EdgeInsets.only(left: 10, top: 8, bottom: 8),
-                          height: 142,
-                          width: double.maxFinite,
+                          margin: EdgeInsets.only(left: 3, right: 3),
+                          padding: EdgeInsets.only(
+                              left: 10, top: 8, bottom: 8, right: 3),
+                          height: 175,
+                          width: MediaQuery.of(context).size.width,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
-                            color: Color(0xffead4d3),
+                            color: Color(0xffead4d3).withOpacity(0.7),
                           ),
                           child: Flexible(
                             child: Text(
-                                style: TextStyle(fontSize: 18),
+                                style: TextStyle(
+                                  fontFamily: 'BodoniModa',
+                                  fontSize: 18,
+                                  color: Color(0xff985a56),
+                                  fontWeight: FontWeight.bold,
+                                ),
                                 'Simplify your [task/activity] with our user-friendly interface' +
                                     ' ' +
                                     'Access a wide range of [resources/tools/information] at your fingertips.\n' +
@@ -220,15 +268,33 @@ class _CarPolState extends State<CarPol> {
                           ),
                         ),
                         SizedBox(
-                          height: 6,
+                          height: 4,
                         ),
-                        Text(
-                          'Trending',
-                          style: TextStyle(
-                              fontSize: 30,
-                              color: Color(0xff985a56),
-                              // backgroundColor: Color(0xffead4d3),
-                              fontWeight: FontWeight.bold),
+                        // Text(
+                        //   'Trending',
+                        //   style: TextStyle(
+                        //       fontSize: 30,
+                        //       color: Color(0xff985a56),
+                        //       // backgroundColor: Color(0xffead4d3),
+                        //       fontWeight: FontWeight.bold),
+                        // ),
+                        Container(
+                          width: MediaQuery.of(context).size.width - 2,
+                          padding: EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            color: Color(0xffead4d3).withOpacity(0.4),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          margin: EdgeInsets.symmetric(
+                              vertical: 16, horizontal: 15),
+                          child: Text(
+                            'Happening now',
+                            style: TextStyle(
+                              fontSize: 25,
+                              color: Color(0xffa84f48),
+                              // decoration: TextDecoration.none,
+                            ),
+                          ),
                         ),
                         SizedBox(
                           height: 2,
@@ -261,7 +327,7 @@ class _CarPolState extends State<CarPol> {
                                 enlargeCenterPage: false, padEnds: false,
                                 enlargeStrategy:
                                 CenterPageEnlargeStrategy.height,
-                                autoPlayInterval: Duration(seconds: 5),
+                                autoPlayInterval: Duration(seconds: 8),
                                 pageSnapping: false,
                                 onPageChanged: (index, reason) {
                                   setState(() {
@@ -290,14 +356,10 @@ class _CarPolState extends State<CarPol> {
                         SizedBox(
                           height: 16,
                         ),
-
-                        // SizedBox(
-                        //   height: 6,
-                        // ),
                         Text(
                           'Stats',
                           style: TextStyle(
-                            fontSize: 50,
+                            fontSize: 30,
                             color: Color(0xff985a56),
                             fontWeight: FontWeight.bold,
                           ),
@@ -312,28 +374,6 @@ class _CarPolState extends State<CarPol> {
                                 topRight: Radius.circular(30),
                               )),
                           child: CircleSyncChart(),
-                          //  Padding(
-                          //   padding: const EdgeInsets.all(8.0),
-                          //   child: SingleChildScrollView(
-                          //     child: Column(
-                          //       mainAxisAlignment: MainAxisAlignment.start,
-                          //       crossAxisAlignment: CrossAxisAlignment.center,
-                          //       children: [
-                          //         Container(
-                          //           margin: EdgeInsets.symmetric(
-                          //               vertical: 16, horizontal: 5),
-                          //           height: 350,
-                          //           width: MediaQuery.of(context).size.width,
-                          //           decoration: BoxDecoration(
-                          //               color: Colors.white,
-                          //               borderRadius:
-                          //                   BorderRadius.circular(10)),
-                          //           child: CircleSyncChart(),
-                          //         )
-                          //       ],
-                          //     ),
-                          //   ),
-                          // ),
                         )
                       ],
                     ),

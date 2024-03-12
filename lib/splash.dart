@@ -20,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   InitialRoute() async {
-    await Future.delayed(Duration(seconds: 1), () {});
+    await Future.delayed(Duration(seconds: 10), () {});
     Navigator.pushReplacement(
         context, MaterialPageRoute(builder: (_) => CarPol()));
   }

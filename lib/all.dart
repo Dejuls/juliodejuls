@@ -406,6 +406,7 @@ class _SideNavBarState extends State<SideNavBar> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
+      backgroundColor: Colors.transparent,
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 8),
         decoration: BoxDecoration(color: Colors.transparent),
@@ -426,7 +427,7 @@ class _SideNavBarState extends State<SideNavBar> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
                     image: DecorationImage(
-                        image: AssetImage('/assets/images/22.PNG'),
+                        image: AssetImage('assets/images/22.PNG'),
                         fit: BoxFit.cover,
                         opacity: 0.2))),
             Container(
@@ -610,15 +611,22 @@ class _SideNavBarState extends State<SideNavBar> {
   }
 }
 
-class Search extends StatelessWidget {
-  const Search({Key? key}) : super(key: key);
+class Search extends StatefulWidget {
+  double margin;
+  Search({Key? key, required this.margin}) : super(key: key);
 
+  @override
+  State<Search> createState() => _SearchState();
+}
+
+class _SearchState extends State<Search> {
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 50,
       padding: EdgeInsets.only(top: 0),
-      margin: EdgeInsets.symmetric(vertical: 20),
+      margin: EdgeInsets.only(
+          left: widget.margin, right: widget.margin, top: 6, bottom: 9),
       width: MediaQuery.of(context).size.width * .99,
       decoration: BoxDecoration(
           color: Color(0xffead4d3), borderRadius: BorderRadius.circular(20)),
@@ -632,12 +640,19 @@ class Search extends StatelessWidget {
             children: [
               Text(
                 'Search',
-                style: TextStyle(fontSize: 27),
+                style: TextStyle(
+                  fontSize: 27,
+                  color: Color(0xff985a56),
+                ),
               ),
               SizedBox(
                 width: MediaQuery.of(context).size.width * .2,
               ),
-              Icon(Icons.search_rounded, size: 30),
+              Icon(
+                Icons.search_rounded,
+                size: 30,
+                color: Color(0xff985a56),
+              ),
             ],
           ),
           enabledBorder: InputBorder.none,
