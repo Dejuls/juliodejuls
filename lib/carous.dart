@@ -18,13 +18,19 @@ class _CarPolState extends State<CarPol> {
     return SafeArea(
       child: Scaffold(
         // backgroundColor: Colors.grey[300],
-        drawer: SideNavBar(),
+        drawer: Container(
+            height: MediaQuery.of(context).size.height * .97,
+            decoration: BoxDecoration(
+                color: Colors.grey[200],
+                borderRadius: BorderRadius.circular(20)),
+            margin: EdgeInsets.only(left: 10, top: 8, bottom: 10),
+            child: SideNavBar()),
         bottomNavigationBar: GNavBar(),
         body: CustomScrollView(
           slivers: [
             SliverPadding(
               padding: EdgeInsets.only(
-                top: 10,
+                top: 4,
               ),
               sliver: SliverAppBar(
                 // flexibleSpace: FlexibleSpaceBar(
@@ -48,10 +54,15 @@ class _CarPolState extends State<CarPol> {
                     style: TextStyle(
                         color: Color(0xff985a56),
                         fontSize: 40,
+                        letterSpacing: 3,
                         fontWeight: FontWeight.bold),
                   ),
-                  // leading: IconButton(
-                  //     onPressed: () {}, icon: Icon(EvaIcons.menu2Outline)),
+                  leading: IconButton(
+                      onPressed: () {},
+                      icon: Icon(
+                        EvaIcons.menu2Outline,
+                        size: 30,
+                      )),
                   actions: [
                     IconButton(
                         onPressed: () {
@@ -115,6 +126,7 @@ class _CarPolState extends State<CarPol> {
                   ),
                   child: SingleChildScrollView(
                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Search(
                           margin: 4.0,
@@ -156,7 +168,7 @@ class _CarPolState extends State<CarPol> {
                           child: Flexible(
                             child: Text(
                                 style: TextStyle(
-                                    fontFamily: 'BodoniModa',
+                                  // fontFamily: 'BodoniModa',
                                     fontSize: 18,
                                     color: Color(0xff985a56),
                                     fontWeight: FontWeight.bold),
@@ -212,7 +224,7 @@ class _CarPolState extends State<CarPol> {
                             child: Text(
                                 style: TextStyle(
                                   fontSize: 18,
-                                  fontFamily: 'BodoniModa',
+                                  // fontFamily: 'BodoniModa',
                                   fontWeight: FontWeight.bold,
                                 ),
                                 'Feature 1: Brief description of feature 1 \tand its benefit\n' +
@@ -255,7 +267,7 @@ class _CarPolState extends State<CarPol> {
                           child: Flexible(
                             child: Text(
                                 style: TextStyle(
-                                  fontFamily: 'BodoniModa',
+                                  // fontFamily: 'BodoniModa',
                                   fontSize: 18,
                                   color: Color(0xff985a56),
                                   fontWeight: FontWeight.bold,
@@ -287,12 +299,14 @@ class _CarPolState extends State<CarPol> {
                           ),
                           margin: EdgeInsets.symmetric(
                               vertical: 16, horizontal: 15),
-                          child: Text(
-                            'Happening now',
-                            style: TextStyle(
-                              fontSize: 25,
-                              color: Color(0xffa84f48),
-                              // decoration: TextDecoration.none,
+                          child: Center(
+                            child: Text(
+                              'Happening now',
+                              style: TextStyle(
+                                fontSize: 25,
+                                color: Color(0xffa84f48),
+                                // decoration: TextDecoration.none,
+                              ),
                             ),
                           ),
                         ),
@@ -321,7 +335,8 @@ class _CarPolState extends State<CarPol> {
                           ),
                           child: CarouselSlider.builder(
                               options: CarouselOptions(
-                                height: 300,
+                                height: 300, viewportFraction: 1,
+                                pauseAutoPlayOnTouch: true,
                                 autoPlay: true,
                                 reverse: false,
                                 enlargeCenterPage: false, padEnds: false,
@@ -354,7 +369,49 @@ class _CarPolState extends State<CarPol> {
                               }),
                         ),
                         SizedBox(
-                          height: 16,
+                          height: 4,
+                        ),
+                        Container(
+                          width: MediaQuery.of(context).size.width - 2,
+                          padding: EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            color: Color(0xffead4d3).withOpacity(0.4),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          margin: EdgeInsets.symmetric(
+                              vertical: 16, horizontal: 15),
+                          child: Center(
+                            child: Text(
+                              'New Candidates',
+                              style: TextStyle(
+                                fontSize: 25,
+                                color: Color(0xffa84f48),
+                                // decoration: TextDecoration.none,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          height: MediaQuery.of(context).size.height / 3,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          child: ListView.builder(
+                              itemCount: nms.length,
+                              itemBuilder: (_, index) => ListTile(
+                                leading: Container(
+                                  height: 40,
+                                  width: 40,
+                                  child: Image(
+                                    image: AssetImage(nms[index].imgurl),
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                                trailing: IconButton(
+                                    onPressed: () {},
+                                    icon: Icon(EvaIcons.heart)),
+                                title: Text(nms[index].name),
+                              )),
                         ),
                         Text(
                           'Stats',

@@ -259,7 +259,8 @@ class _ConTesTantState extends State<ConTesTant> {
 
 class AvaTar extends StatefulWidget {
   double? radias;
-  AvaTar({super.key, this.radias});
+  double? size;
+  AvaTar({super.key, this.radias, this.size});
 
   @override
   State<AvaTar> createState() => _AvaTarState();
@@ -292,9 +293,9 @@ class _AvaTarState extends State<AvaTar> {
             color: Colors.transparent,
             child: IconButton(
               onPressed: () => ShowOption(context),
-              icon: const Icon(
+              icon: Icon(
                 Icons.add_a_photo_outlined,
-                size: 40,
+                size: widget.size,
                 color: Color(0xffa84f48),
               ),
             ),
@@ -377,45 +378,111 @@ class _SideNavBarState extends State<SideNavBar> {
     return Drawer(
       backgroundColor: Colors.transparent,
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 8),
+        padding: EdgeInsets.symmetric(horizontal: 0),
         decoration: BoxDecoration(color: Colors.transparent),
         child: ListView(
           children: [
             SizedBox(
               height: 10,
             ),
-            UserAccountsDrawerHeader(
-                accountName: Text('Julio'),
-                accountEmail: Text('juliodejuls@gmail.com'),
-                currentAccountPicture: ClipOval(
-                  clipBehavior: Clip.antiAliasWithSaveLayer,
-                  child: AvaTar(
-                    radias: 70,
+            Container(
+              padding: EdgeInsets.all(16),
+              height: 150,
+              width: MediaQuery.of(context).size.width * .8,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  image: DecorationImage(
+                      image: AssetImage('assets/images/22.PNG'),
+                      fit: BoxFit.cover,
+                      opacity: 0.2)),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Column(
+                    children: [
+                      ClipOval(
+                        clipBehavior: Clip.antiAliasWithSaveLayer,
+                        child: AvaTar(
+                          radias: 40,
+                          size: 20,
+                        ),
+                      ),
+                    ],
                   ),
-                ),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30),
-                    image: DecorationImage(
-                        image: AssetImage('assets/images/22.PNG'),
-                        fit: BoxFit.cover,
-                        opacity: 0.2))),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        height: 6,
+                      ),
+                      Text(
+                        'Julio',
+                        style: TextStyle(fontSize: 18, letterSpacing: 2),
+                      ),
+                      Text('juliodejuls@gmail.com')
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            // UserAccountsDrawerHeader(
+            //     currentAccountPictureSize: Size.square(80),
+            //     margin: EdgeInsets.zero,
+            //     accountName: Container(
+            //       height: 200,
+            //       width: MediaQuery.of(context).size.width,
+            //       color: Colors.red,
+            //       margin: EdgeInsets.only(left: 0),
+            //       child: Row(
+            //         children: [
+            //           ClipOval(
+            //             clipBehavior: Clip.antiAliasWithSaveLayer,
+            //             child: AvaTar(
+            //               radias: 70,
+            //             ),
+            //           ),
+            //           // Column(
+            //           //   children: [
+            //           //     Text(
+            //           //       'Julio',
+            //           //       style: TextStyle(fontSize: 18, letterSpacing: 2),
+            //           //     ),
+            //           //     Text('juliodejuls@gmail.com')
+            //           //   ],
+            //           // ),
+            //         ],
+            //       ),
+            //     ),
+            //     accountEmail: Center(child: Text('juliodejuls@gmail.com')),
+            //     // currentAccountPicture: ClipOval(
+            //     //   clipBehavior: Clip.antiAliasWithSaveLayer,
+            //     //   child: AvaTar(
+            //     //     radias: 70,
+            //     //   ),
+            //     // ),
+            //     decoration: BoxDecoration(
+            //         borderRadius: BorderRadius.circular(20),
+            //         image: DecorationImage(
+            //             image: AssetImage('assets/images/22.PNG'),
+            //             fit: BoxFit.cover,
+            //             opacity: 0.2))),
             Container(
               padding: EdgeInsets.all(10),
               margin: EdgeInsets.symmetric(horizontal: 0, vertical: 13),
               decoration: BoxDecoration(
+                color: Colors.transparent,
+                borderRadius: BorderRadius.circular(30),
+                border: Border.all(
                   color: Colors.transparent,
-                  borderRadius: BorderRadius.circular(30),
-                  border: Border.all(
-                    color: Colors.transparent,
-                  ),
-                  image: DecorationImage(image: AssetImage('assets/images/'))),
+                ),
+              ),
               height: MediaQuery.of(context).size.height * .7,
               width: MediaQuery.of(context).size.width * .7,
               child: SingleChildScrollView(
                 child: Column(
                   children: [
                     ListTile(
-                      contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                      contentPadding: EdgeInsets.symmetric(horizontal: 15),
                       leading: _selind == 0
                           ? Icon(Icons.favorite_rounded,
                           color: Color(0xff985a56), size: 30)
@@ -432,15 +499,16 @@ class _SideNavBarState extends State<SideNavBar> {
                       selectedTileColor: Color(0xffead4d3),
                       onTap: () => CambioColor(0),
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.horizontal(
-                              left: Radius.circular(30),
-                              right: Radius.circular(30))),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 2,
                     ),
                     ListTile(
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.horizontal(
-                              left: Radius.circular(30),
-                              right: Radius.circular(30))),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
                       leading: _selind == 1
                           ? Icon(Icons.color_lens_rounded,
                           color: Color(0xff985a56), size: 30)
@@ -450,7 +518,6 @@ class _SideNavBarState extends State<SideNavBar> {
                         'Theme',
                         style: TextStyle(
                           fontSize: 20,
-                          wordSpacing: 16,
                         ),
                       ),
                       tileColor: _selind == 1 ? Color(0xffead4d3) : bef,
@@ -460,9 +527,8 @@ class _SideNavBarState extends State<SideNavBar> {
                     Divider(),
                     ListTile(
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.horizontal(
-                                left: Radius.circular(30),
-                                right: Radius.circular(30))),
+                          borderRadius: BorderRadius.circular(15),
+                        ),
                         leading: _selind == 2
                             ? Icon(Icons.people_outline_rounded,
                             color: Color(0xff985a56), size: 30)
@@ -478,11 +544,13 @@ class _SideNavBarState extends State<SideNavBar> {
                         tileColor: _selind == 2 ? Color(0xffead4d3) : bef,
                         selectedTileColor: Color(0xffead4d3),
                         onTap: () => CambioColor(2)),
+                    SizedBox(
+                      height: 4,
+                    ),
                     ListTile(
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.horizontal(
-                              left: Radius.circular(30),
-                              right: Radius.circular(30))),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                       leading: _selind == 3
                           ? Icon(Icons.question_answer_rounded,
                           color: Color(0xff985a56), size: 30)
@@ -499,11 +567,13 @@ class _SideNavBarState extends State<SideNavBar> {
                       selectedTileColor: Color(0xffead4d3),
                       onTap: () => CambioColor(3),
                     ),
+                    SizedBox(
+                      height: 4,
+                    ),
                     ListTile(
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.horizontal(
-                              left: Radius.circular(30),
-                              right: Radius.circular(30))),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
                       leading: _selind == 4
                           ? Icon(Icons.feedback_rounded,
                           color: Color(0xff985a56), size: 30)
@@ -525,9 +595,8 @@ class _SideNavBarState extends State<SideNavBar> {
                     Divider(),
                     ListTile(
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.horizontal(
-                              left: Radius.circular(30),
-                              right: Radius.circular(30))),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
                       leading: _selind == 5
                           ? Icon(Icons.build_rounded,
                           color: Color(0xff985a56), size: 30)
@@ -546,11 +615,13 @@ class _SideNavBarState extends State<SideNavBar> {
                         CambioColor(5);
                       },
                     ),
+                    SizedBox(
+                      height: 2,
+                    ),
                     ListTile(
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.horizontal(
-                              left: Radius.circular(30),
-                              right: Radius.circular(30))),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
                       leading: _selind == 6
                           ? Icon(Icons.exit_to_app_rounded,
                           color: Color(0xff985a56), size: 30)
