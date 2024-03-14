@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:juliodejuls/exporT.dart';
+import 'package:line_icons/line_icons.dart';
 
 class LogInState extends StatefulWidget {
   const LogInState({Key? key}) : super(key: key);
@@ -26,62 +27,7 @@ class _LogInStateState extends State<LogInState> {
   Widget build(BuildContext context) {
     return Scaffold(
       //
-      body:
-      // CustomScrollView(
-      //   slivers: [
-      //     SliverAppBar.large(
-      //       title: Text('Welcome back!!!',
-      //           style: TextStyle(
-      //             fontSize: 40,
-      //             color: Color(0xffa84f48),
-      //           )),
-      //       actions: [
-      //         IconButton(
-      //           onPressed: () => Navigator.push(
-      //               context, MaterialPageRoute(builder: (context) => CarPol())),
-      //           icon: Icon(EvaIcons.moreVerticalOutline),
-      //           iconSize: 30,
-      //         )
-      //       ],
-      //       centerTitle: true,
-      //       leading: IconButton(
-      //         onPressed: () => Navigator.pop(context),
-      //         icon: Icon(EvaIcons.menu2Outline),
-      //         iconSize: 30,
-      //       ),
-      //       backgroundColor: Color(0xffead4d3),
-      //       shape: RoundedRectangleBorder(
-      //           borderRadius: BorderRadius.only(
-      //               bottomRight: Radius.circular(50),
-      //               bottomLeft: Radius.circular(50))),
-      //       bottom: PreferredSize(
-      //           preferredSize: Size.fromHeight(100),
-      //           child: Column(
-      //             mainAxisAlignment: MainAxisAlignment.center,
-      //             children: [
-      //               Container(
-      //                 margin: EdgeInsets.symmetric(horizontal: 10),
-      //                 decoration: BoxDecoration(
-      //                     color: Colors.white,
-      //                     borderRadius: BorderRadius.circular(39)),
-      //                 //  color: Color(0xffa84f48),
-      //                 padding: EdgeInsets.only(bottom: 0, top: 0),
-      //                 width: MediaQuery.of(context).size.width,
-      //                 height: 100,
-      //                 child: Row(
-      //                   children: [
-      //                     Spacer(),
-      //                     ClipOval(child: AvaTar(radias:10)),
-      //                     Spacer()
-      //                   ],
-      //                 ),
-      //               ),
-      //             ],
-      //           )),
-      //     ),
-      //     SliverToBoxAdapter(
-      //       child:
-      Container(
+      body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
@@ -145,12 +91,21 @@ class _LogInStateState extends State<LogInState> {
                               TextStyle(fontSize: 20, color: Colors.blue),
                               textAlign: TextAlign.center,
                               textInputAction: TextInputAction.done,
-                              showCursor: false,
+                              cursorColor: Color(0xffa84f48),
+                              cursorHeight: 24.0,
+                              cursorWidth: 3,
+                              showCursor: true,
                               autovalidateMode:
                               AutovalidateMode.onUserInteraction,
                               controller: _name_email,
                               decoration: InputDecoration(
-                                contentPadding: EdgeInsets.only(top: 10),
+                                prefixIcon: Icon(
+                                  LineIcons.envelope,
+                                  size: 23,
+                                  color: Color(0xffa84f48),
+                                ),
+                                contentPadding: EdgeInsets.only(
+                                    left: 18, bottom: 12, top: 2),
                                 errorBorder: InputBorder.none,
                                 focusedErrorBorder: InputBorder.none,
                                 label: Text('Enter usename or email'),
@@ -197,11 +152,32 @@ class _LogInStateState extends State<LogInState> {
                               textAlign: TextAlign.center,
                               autovalidateMode:
                               AutovalidateMode.onUserInteraction,
-                              showCursor: false,
-                              obscureText: true,
+                              cursorColor: Color(0xffa84f48),
+                              cursorHeight: 24.0,
+                              cursorWidth: 3,
+                              showCursor: true,
+                              obscureText: isTapped,
                               decoration: InputDecoration(
-                                contentPadding:
-                                EdgeInsets.only(top: 10, bottom: 10),
+                                prefixIcon: Icon(
+                                  LineIcons.lock,
+                                  size: 23,
+                                  color: Color(0xffa84f48),
+                                ),
+                                suffixIcon: IconButton(
+                                  onPressed: () => setState(() {
+                                    isTapped = !isTapped;
+                                  }),
+                                  icon: Icon(
+                                    isTapped
+                                        ? LineIcons.eye
+                                        : LineIcons.eyeSlash,
+                                    color: Color(0xffa84f48),
+                                  ),
+                                ),
+                                contentPadding: EdgeInsets.only(
+                                  left: 18,
+                                  bottom: 8,
+                                ),
                                 errorBorder: InputBorder.none,
                                 focusedErrorBorder: InputBorder.none,
                                 labelText: 'password',

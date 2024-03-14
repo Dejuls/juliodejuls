@@ -42,6 +42,7 @@ List<PolNames> nms = [
 ];
 int jid = 0;
 int index = nms.length;
+bool isTapped = true;
 
 class Nav extends StatefulWidget {
   const Nav({Key? key}) : super(key: key);
@@ -116,8 +117,15 @@ class NavBar2 extends StatelessWidget {
   }
 }
 
-class GNavBar extends StatelessWidget {
-  const GNavBar({Key? key}) : super(key: key);
+class GNavBar extends StatefulWidget {
+  GNavBar({Key? key}) : super(key: key);
+
+  @override
+  State<GNavBar> createState() => _GNavBarState();
+}
+
+class _GNavBarState extends State<GNavBar> {
+  int _chatNotificationCounter = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -157,7 +165,7 @@ class GNavBar extends StatelessWidget {
             textStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
           GButton(
-            icon: LineIcons.user,
+            icon: LineIcons.comment,
             text: 'User',
             iconSize: 26,
             textStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
@@ -669,7 +677,8 @@ class _SearchState extends State<Search> {
           left: widget.margin, right: widget.margin, top: 6, bottom: 9),
       width: MediaQuery.of(context).size.width * .99,
       decoration: BoxDecoration(
-          color: Color(0xffead4d3), borderRadius: BorderRadius.circular(20)),
+          color: Color(0xffead4d3).withOpacity(.4),
+          borderRadius: BorderRadius.circular(20)),
       child: TextFormField(
         style: TextStyle(fontFamily: 'Anta', color: Colors.blue, fontSize: 25),
         cursorHeight: 21,
@@ -678,20 +687,20 @@ class _SearchState extends State<Search> {
           label: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Icon(
+                Icons.search_rounded,
+                size: 30,
+                color: Color(0xff985a56),
+              ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width * .2,
+              ),
               Text(
                 'Search',
                 style: TextStyle(
                   fontSize: 27,
                   color: Color(0xff985a56),
                 ),
-              ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width * .2,
-              ),
-              Icon(
-                Icons.search_rounded,
-                size: 30,
-                color: Color(0xff985a56),
               ),
             ],
           ),

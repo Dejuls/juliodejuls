@@ -20,6 +20,7 @@ class _SignInState extends State<SignIn> {
   String _conpass = '';
   String? username;
   String? email;
+
   @override
   void dispose() {
     _username.dispose();
@@ -124,7 +125,7 @@ class _SignInState extends State<SignIn> {
                               controller: _username,
                               decoration: InputDecoration(
                                 contentPadding: EdgeInsets.only(
-                                    left: 18, bottom: 15, top: 2),
+                                    left: 18, bottom: 11, top: 2),
                                 prefixIcon: Icon(
                                   LineIcons.user,
                                   size: 23,
@@ -192,7 +193,7 @@ class _SignInState extends State<SignIn> {
                               ),
                               decoration: InputDecoration(
                                 contentPadding: EdgeInsets.only(
-                                    left: 18, bottom: 15, top: 2),
+                                    left: 18, bottom: 11, top: 2),
                                 prefixIcon: Icon(
                                   LineIcons.envelope,
                                   size: 23,
@@ -255,6 +256,17 @@ class _SignInState extends State<SignIn> {
                               textAlign: TextAlign.center,
                               controller: _pswd,
                               decoration: InputDecoration(
+                                suffixIcon: IconButton(
+                                  onPressed: () => setState(() {
+                                    isTapped = !isTapped;
+                                  }),
+                                  icon: Icon(
+                                    isTapped
+                                        ? LineIcons.eye
+                                        : LineIcons.eyeSlash,
+                                    color: Color(0xffa84f48),
+                                  ),
+                                ),
                                 contentPadding: EdgeInsets.only(
                                     left: 18, bottom: 1, top: 8),
                                 prefixIcon: Icon(
@@ -285,7 +297,7 @@ class _SignInState extends State<SignIn> {
                               cursorHeight: 24.0,
                               cursorWidth: 3,
                               showCursor: true,
-                              obscureText: true,
+                              obscureText: isTapped,
                               onSaved: (value) {
                                 setState(() {
                                   _pass = value!;
@@ -295,18 +307,18 @@ class _SignInState extends State<SignIn> {
                                 if (value?.isEmpty ?? true) {
                                   return 'enter valid password';
                                 }
-                                if (value!.length < 7) {
+                                if (value!.length != 8) {
                                   return 'password must be atleast 8 characters';
                                 }
                                 RegExp _spechars =
-                                RegExp(r'[!@#$+-/;%^&*(),.?":{}|<>]');
+                                RegExp(r'[!@#$+-/:;%^&*(),.?":{}|<>]');
                                 if (!_spechars.hasMatch(value)) {
                                   return 'password must contain a two character or number';
                                 }
-                                RegExp allters= RegExp(r'[a-zA_Z0-9]');
-                                int charcount =allters
-                                    .allMatches(value).length;
-                                if (charcount < 2) {
+                                RegExp _allters = RegExp(r'[a-zA_Z0-9]');
+                                int _charcount =
+                                    _allters.allMatches(value).length;
+                                if (_charcount < 2) {
                                   return 'password must contain atleast two characters or numbers';
                                 }
                                 return null;
@@ -335,13 +347,14 @@ class _SignInState extends State<SignIn> {
                               textAlign: TextAlign.center,
                               decoration: InputDecoration(
                                 contentPadding: EdgeInsets.only(
-                                    left: 18, bottom: 15, top: 2),
+                                    left: 18, bottom: 11, top: 2),
+
                                 prefixIcon: Icon(
                                   LineIcons.lockOpen,
                                   size: 23,
                                   color: Color(0xffa84f48),
                                 ),
-                                label: Text('Confirm password'),
+                                label: Text('Confirm'),
                                 enabled: true,
                                 errorBorder: InputBorder.none,
                                 focusedErrorBorder: InputBorder.none,
@@ -367,7 +380,7 @@ class _SignInState extends State<SignIn> {
                                   _conpass = value!;
                                 });
                               },
-                              obscureText: true,
+                              obscureText: isTapped,
                               validator: (value) {
                                 if (value?.isEmpty ?? true) {
                                   return "passwords don't match";
