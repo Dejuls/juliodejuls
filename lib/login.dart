@@ -31,15 +31,17 @@ class _LogInStateState extends State<LogInState> {
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
-          gradient: LinearGradient(
-              colors: [
-                Colors.white.withOpacity(1),
-                Color(0xffead4d3),
-                Colors.white.withOpacity(.7)
-              ],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomRight,
-              tileMode: TileMode.mirror),
+          color: Colors.grey[200],
+
+          // gradient: LinearGradient(
+          //     colors: [
+          //       Colors.white.withOpacity(1),
+          //       Color(0xffead4d3),
+          //       Colors.white.withOpacity(.7)
+          //     ],
+          //     begin: Alignment.topCenter,
+          //     end: Alignment.bottomRight,
+          //     tileMode: TileMode.mirror),
         ),
         child: Expanded(
           child: Column(
@@ -55,7 +57,8 @@ class _LogInStateState extends State<LogInState> {
                 style: TextStyle(fontFamily: 'Anta', color: Color(0xffa84f48)),
               ),
               AvaTar(
-                radias: 80.0,
+                radias: 70.0,
+                size: 35,
               ),
               SizedBox(
                 height: 10,
@@ -76,14 +79,15 @@ class _LogInStateState extends State<LogInState> {
                       children: [
                         Expanded(
                           child: Container(
-                            margin: EdgeInsets.symmetric(vertical: 8),
+                            margin: EdgeInsets.symmetric(vertical: 6),
                             padding: EdgeInsets.symmetric(horizontal: 10),
                             decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(20),
-                                border: Border.all(
-                                  color: Color(0xffa84f48),
-                                )),
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(20),
+                              // border: Border.all(
+                              //   color: Color(0xffa84f48),
+                              // ),
+                            ),
                             height: 45.0,
                             width: MediaQuery.of(context).size.width * .80,
                             child: TextFormField(
@@ -136,14 +140,15 @@ class _LogInStateState extends State<LogInState> {
                         ),
                         Expanded(
                           child: Container(
-                            margin: EdgeInsets.symmetric(vertical: 8),
+                            margin: EdgeInsets.symmetric(vertical: 6),
                             padding: EdgeInsets.symmetric(horizontal: 10),
                             decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(20),
-                                border: Border.all(
-                                  color: Color(0xffa84f48),
-                                )),
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(20),
+                              // border: Border.all(
+                              //   color: Color(0xffa84f48),
+                              // ),
+                            ),
                             height: 45.0,
                             width: MediaQuery.of(context).size.width * .80,
                             child: TextFormField(
@@ -213,7 +218,7 @@ class _LogInStateState extends State<LogInState> {
                           ),
                         ),
                         Container(
-                          margin: EdgeInsets.symmetric(vertical: 10),
+                          margin: EdgeInsets.symmetric(vertical: 4),
                           width: 150,
                           child: FloatingActionButton(
                             onPressed: () {
@@ -284,16 +289,20 @@ class _LogInStateState extends State<LogInState> {
                               fontWeight: FontWeight.bold),
                         ),
                         Container(
-                          margin: EdgeInsets.only(top: 10, bottom: 10),
+                          margin: EdgeInsets.only(top: 4, bottom: 4),
                           padding: EdgeInsets.only(bottom: 10),
                           width: 300,
                           height: 65,
                           decoration: BoxDecoration(
                             boxShadow: [
                               BoxShadow(
-                                  spreadRadius: 3,
+                                  spreadRadius: 2,
                                   color: Colors.white,
-                                  offset: Offset(5, 5))
+                                  offset: Offset(5, 5)),
+                              BoxShadow(
+                                  spreadRadius: 2,
+                                  color: Colors.white,
+                                  offset: Offset(-5, -5)),
                             ],
                             borderRadius: BorderRadius.circular(12.0),
                             color: Color(0xffead4d3),
@@ -333,6 +342,9 @@ class _LogInStateState extends State<LogInState> {
                               ),
                             ],
                           ),
+                        ),
+                        SizedBox(
+                          height: 4,
                         )
                       ],
                     ),
