@@ -150,7 +150,7 @@ class _SignInState extends State<SIn> {
                           )),
 
                       Container(
-                        height: 200,
+                        height: 100,
                         margin: EdgeInsets.only(
                             left: 10, right: 10, top: 10, bottom: 15),
                         // EdgeInsets.symmetric(horizontal: 10, vertical: 2),

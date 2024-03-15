@@ -125,7 +125,6 @@ class GNavBar extends StatefulWidget {
 }
 
 class _GNavBarState extends State<GNavBar> {
-  int _chatNotificationCounter = 0;
 
   @override
   Widget build(BuildContext context) {

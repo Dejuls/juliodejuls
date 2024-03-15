@@ -34,22 +34,22 @@ class _SignInState extends State<SignIn> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
         body: Container(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
-            color: Colors.white,
-            gradient: LinearGradient(
-                colors: [
-                  Colors.white.withOpacity(.9),
-                  Color(0xffead4d3),
-                  Colors.white.withOpacity(.7),
-                ],
-                // stops: [],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                tileMode: TileMode.mirror),
+            color: Colors.grey[200],
+            // gradient: LinearGradient(
+            //     colors: [
+            //       Colors.white.withOpacity(.9),
+            //       Colors.grey.withOpacity(.8),
+            //       // Color(0xffead4d3),
+            //       Colors.white.withOpacity(.7),
+            //     ],
+            //     // stops: [],
+            //     begin: Alignment.topCenter,
+            //     end: Alignment.bottomCenter,
+            //     tileMode: TileMode.mirror),
           ),
           child: Expanded(
             flex: 1,
@@ -71,8 +71,11 @@ class _SignInState extends State<SignIn> {
 
                 AvaTar(
                   radias: 80,
+                  size: 40,
                 ),
-
+                SizedBox(
+                  height: 4,
+                ),
                 Container(
                   width: MediaQuery.of(context).size.width * .7,
                   padding: EdgeInsets.all(8),
@@ -105,12 +108,12 @@ class _SignInState extends State<SignIn> {
                           child: Container(
                             margin: EdgeInsets.symmetric(vertical: 4),
                             decoration: BoxDecoration(
-                              color: Colors.transparent,
+                              color: Colors.white,
                               borderRadius: BorderRadius.circular(30),
-                              border: Border.all(
-                                color: Color(0xffa84f48),
-                                width: 2,
-                              ),
+                              // border: Border.all(
+                              //   color: Color(0xffa84f48),
+                              //   width: 2,
+                              // ),
                             ),
                             height: 44,
                             width: MediaQuery.of(context).size.width * .80,
@@ -171,11 +174,11 @@ class _SignInState extends State<SignIn> {
                           child: Container(
                             margin: EdgeInsets.symmetric(vertical: 4),
                             decoration: BoxDecoration(
-                              color: Colors.transparent,
-                              border: Border.all(
-                                color: Color(0xffa84f48),
-                                width: 2,
-                              ),
+                              color: Colors.white,
+                              // border: Border.all(
+                              //   color: Color(0xffa84f48),
+                              //   width: 2,
+                              // ),
                               borderRadius: BorderRadius.circular(30),
                             ),
                             height: 44,
@@ -239,12 +242,13 @@ class _SignInState extends State<SignIn> {
                           child: Container(
                             margin: EdgeInsets.symmetric(vertical: 4),
                             decoration: BoxDecoration(
-                                color: Colors.transparent,
-                                borderRadius: BorderRadius.circular(30),
-                                border: Border.all(
-                                  color: Color(0xffa84f48),
-                                  width: 2,
-                                )),
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(30),
+                              // border: Border.all(
+                              //   color: Color(0xffa84f48),
+                              //   width: 2,
+                              // )
+                            ),
                             height: 44,
                             width: MediaQuery.of(context).size.width * .80,
                             child: TextFormField(
@@ -307,7 +311,7 @@ class _SignInState extends State<SignIn> {
                                 if (value?.isEmpty ?? true) {
                                   return 'enter valid password';
                                 }
-                                if (value!.length != 8) {
+                                if (value!.length >=8) {
                                   return 'password must be atleast 8 characters';
                                 }
                                 RegExp _spechars =
@@ -330,12 +334,13 @@ class _SignInState extends State<SignIn> {
                           child: Container(
                             margin: EdgeInsets.symmetric(vertical: 4),
                             decoration: BoxDecoration(
-                                color: Colors.transparent,
-                                borderRadius: BorderRadius.circular(30),
-                                border: Border.all(
-                                  color: Color(0xffa84f48),
-                                  width: 2,
-                                )),
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(30),
+                              // border: Border.all(
+                              //   color: Color(0xffa84f48),
+                              //   width: 2,
+                              // ),
+                            ),
                             height: 44,
                             width: MediaQuery.of(context).size.width * .82,
                             child: TextFormField(
@@ -441,17 +446,21 @@ class _SignInState extends State<SignIn> {
                 Container(
                   margin: EdgeInsets.only(top: 5, bottom: 10),
                   padding: EdgeInsets.only(bottom: 10),
-                  width: 320,
+                  width: 324,
                   height: 65,
                   decoration: BoxDecoration(
                     boxShadow: [
                       BoxShadow(
+                          spreadRadius: 2,
+                          color: Colors.white,
+                          offset: Offset(5, 5)),
+                      BoxShadow(
                           spreadRadius: 3,
                           color: Colors.white,
-                          offset: Offset(5, 5))
+                          offset: Offset(-5, -5)),
                     ],
                     borderRadius: BorderRadius.circular(12.0),
-                    color: Color(0xffead4d3),
+                    color: Colors.grey[300],
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
