@@ -21,13 +21,13 @@ class _SignInState extends State<SIn> {
         child: Expanded(
           child: Container(
             decoration: BoxDecoration(
-              color: Colors.white,
-              border: Border(
-                bottom: BorderSide(
-                    color: Color(0xffa84f48),
-                    width: 9,
-                    style: BorderStyle.solid),
-              ),
+              color: Colors.grey[200],
+              // border: Border(
+              //   bottom: BorderSide(
+              //       color: Color(0xffa84f48),
+              //       width: 9,
+              //       style: BorderStyle.solid),
+              // ),
             ),
 
             // (0xffb06b67),
@@ -43,12 +43,15 @@ class _SignInState extends State<SIn> {
                         clipper: Patho(),
                         child: Container(
                           height: 150,
-                          color: Color(0xffead4d3),
+                          color: Colors.grey[100],
                           child: WaveWidget(
                             config: CustomConfig(
-                              colors: [Color(0xffead4d3), Color(0xffa84f48)],
+                              colors: [
+                                Color(0xffa84f48).withOpacity(.2),
+                                Colors.white,
+                              ],
                               durations: [100000, 100000],
-                              heightPercentages: [1, 2],
+                              heightPercentages: [2, 1],
                             ),
                             size: Size(MediaQuery.of(context).size.width, 40),
                           ),
@@ -58,7 +61,8 @@ class _SignInState extends State<SIn> {
                         height: 3.0,
                       ),
                       AvaTar(
-                        radias: 80,
+                        radias: 70,
+                        size: 46,
                       ),
                       Text('Welcome !!',
                           style: TextStyle(
@@ -69,7 +73,7 @@ class _SignInState extends State<SIn> {
                       Container(
                         padding: EdgeInsets.all(8),
                         decoration: BoxDecoration(
-                          color: Color(0xffead4d3).withOpacity(0.4),
+                          color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
                         ),
                         margin:
@@ -136,9 +140,7 @@ class _SignInState extends State<SIn> {
                           ),
                         ],
                       ),
-                      SizedBox(
-                        height: 10,
-                      ),
+
                       IconButton(
                           onPressed: () => Navigator.push(context,
                               MaterialPageRoute(builder: (_) => CarPol())),
@@ -146,37 +148,50 @@ class _SignInState extends State<SIn> {
                             Icons.arrow_right_alt_rounded,
                             size: 35,
                           )),
-                      SizedBox(
-                        height: 10,
+
+                      Container(
+                        height: 200,
+                        margin: EdgeInsets.only(
+                            left: 10, right: 10, top: 10, bottom: 15),
+                        // EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+                        padding: EdgeInsets.all(8),
+                        color: Colors.white,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            RichText(
+                                text: TextSpan(children: [
+                                  TextSpan(
+                                    text: 'Please read our ',
+                                    style:
+                                    TextStyle(fontSize: 19, fontFamily: 'Anta'),
+                                  ),
+                                  TextSpan(
+                                      text: 'Privacy terms &\n Policies ',
+                                      recognizer: TapGestureRecognizer()
+                                        ..onTap = () {
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                              SnackBar(content: Text('yo')));
+                                        },
+                                      style: TextStyle(
+                                        fontFamily: 'Anta',
+                                        decoration: TextDecoration.underline,
+                                        fontSize: 20,
+                                        color: Color(0xffa84f48),
+                                      )),
+                                  TextSpan(
+                                    text: ' before proceeding',
+                                    style:
+                                    TextStyle(fontSize: 19, fontFamily: 'Anta'),
+                                  )
+                                ])),
+                          ],
+                        ),
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          RichText(
-                              text: TextSpan(children: [
-                                TextSpan(
-                                  text: 'Please read our',
-                                  style: TextStyle(fontSize: 19),
-                                ),
-                                TextSpan(
-                                    text: 'Privacy terms &\n Policies ',
-                                    recognizer: TapGestureRecognizer()
-                                      ..onTap = () {
-                                        ScaffoldMessenger.of(context).showSnackBar(
-                                            SnackBar(content: Text('yo')));
-                                      },
-                                    style: TextStyle(
-                                      decoration: TextDecoration.underline,
-                                      fontSize: 20,
-                                      color: Color(0xffa84f48),
-                                    )),
-                                TextSpan(
-                                  text: ' before proceeding',
-                                  style: TextStyle(fontSize: 19),
-                                )
-                              ])),
-                        ],
-                      ),
+                      // SizedBox(
+                      //   height: 10,
+                      // )
                     ],
                   ),
                 ),
