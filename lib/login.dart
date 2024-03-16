@@ -54,7 +54,7 @@ class _LogInStateState extends State<LogInState> {
               Text(
                 'Welcome back ',
                 textScaleFactor: 3,
-                style: TextStyle(fontFamily: 'Anta', color: Color(0xffa84f48)),
+                style: TextStyle(fontFamily: '', color: Color(0xffa84f48)),
               ),
               AvaTar(
                 radias: 70.0,
@@ -114,6 +114,7 @@ class _LogInStateState extends State<LogInState> {
                                 focusedErrorBorder: InputBorder.none,
                                 label: Text('Enter usename or email'),
                                 labelStyle: TextStyle(
+                                  overflow: TextOverflow.visible,
                                   fontSize: 20,
                                   color: Color(0xffa84f48),
                                 ),
@@ -177,6 +178,7 @@ class _LogInStateState extends State<LogInState> {
                                         ? LineIcons.eye
                                         : LineIcons.eyeSlash,
                                     color: Color(0xffa84f48),
+                                    size: 30,
                                   ),
                                 ),
                                 contentPadding: EdgeInsets.only(
@@ -291,21 +293,21 @@ class _LogInStateState extends State<LogInState> {
                         Container(
                           margin: EdgeInsets.only(top: 4, bottom: 4),
                           padding: EdgeInsets.only(bottom: 10),
-                          width: 300,
-                          height: 65,
+                          width: MediaQuery.of(context).size.width - 34,
+                          height: 60,
                           decoration: BoxDecoration(
                             boxShadow: [
-                              BoxShadow(
-                                  spreadRadius: 2,
-                                  color: Colors.white,
-                                  offset: Offset(5, 5)),
-                              BoxShadow(
-                                  spreadRadius: 2,
-                                  color: Colors.white,
-                                  offset: Offset(-5, -5)),
+                              //BoxShadow(
+                              // spreadRadius: 2,
+                              // color: Colors.white,
+                              // offset: Offset(5, 5)),
+                              // BoxShadow(
+                              //     spreadRadius: 2,
+                              //     color: Colors.white,
+                              //     offset: Offset(-5, -5)),
                             ],
                             borderRadius: BorderRadius.circular(12.0),
-                            color: Color(0xffead4d3),
+                            color: Colors.white,
                           ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -366,6 +368,6 @@ bool _isemail(String jus) {
 }
 
 bool _isname(String jus) {
-  final nemu = RegExp(r'^[a-z A-Z 0-9_]{3-16}+$');
+  final nemu = RegExp(r'^[a-z A-Z0-9_]{3-16}+$');
   return nemu.hasMatch(jus);
 }
