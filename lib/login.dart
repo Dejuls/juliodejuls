@@ -45,7 +45,7 @@ class _LogInStateState extends State<LogInState> {
         ),
         child: Expanded(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(
@@ -368,6 +368,6 @@ bool _isemail(String jus) {
 }
 
 bool _isname(String jus) {
-  final nemu = RegExp(r'^[a-z A-Z0-9_]{3-16}+$');
+  final nemu = RegExp(r'^[a-zA-Z0-9_]{3-16}+$');
   return nemu.hasMatch(jus);
 }
