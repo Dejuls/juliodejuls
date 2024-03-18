@@ -54,7 +54,14 @@ class _LogInStateState extends State<LogInState> {
               Text(
                 'Welcome back ',
                 textScaleFactor: 3,
-                style: TextStyle(fontFamily: '', color: Color(0xffa84f48)),
+                style: TextStyle(
+                  fontFamily: '',
+                  // color: Color(0xffa84f48),
+                  foreground: Paint()
+                    ..style = PaintingStyle.stroke
+                    ..color = Color(0xffa84f48)
+                    ..strokeWidth = 2,
+                ),
               ),
               AvaTar(
                 radias: 70.0,
@@ -77,150 +84,161 @@ class _LogInStateState extends State<LogInState> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Expanded(
-                          child: Container(
-                            margin: EdgeInsets.symmetric(vertical: 6),
-                            padding: EdgeInsets.symmetric(horizontal: 10),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(20),
-                              // border: Border.all(
-                              //   color: Color(0xffa84f48),
-                              // ),
-                            ),
-                            height: 45.0,
-                            width: MediaQuery.of(context).size.width * .80,
-                            child: TextFormField(
-                              style:
-                              TextStyle(fontSize: 20, color: Colors.blue),
-                              textAlign: TextAlign.center,
-                              textInputAction: TextInputAction.done,
-                              cursorColor: Color(0xffa84f48),
-                              cursorHeight: 24.0,
-                              cursorWidth: 3,
-                              showCursor: true,
-                              autovalidateMode:
-                              AutovalidateMode.onUserInteraction,
-                              controller: _name_email,
-                              decoration: InputDecoration(
-                                prefixIcon: Icon(
-                                  LineIcons.envelope,
-                                  size: 23,
-                                  color: Color(0xffa84f48),
-                                ),
-                                contentPadding: EdgeInsets.only(
-                                    left: 18, bottom: 12, top: 2),
-                                errorBorder: InputBorder.none,
-                                focusedErrorBorder: InputBorder.none,
-                                label: Text('Enter usename or email'),
-                                labelStyle: TextStyle(
-                                  overflow: TextOverflow.visible,
-                                  fontSize: 20,
-                                  color: Color(0xffa84f48),
-                                ),
-                                enabled: true,
-                                floatingLabelBehavior:
-                                FloatingLabelBehavior.never,
-                                enabledBorder: InputBorder.none,
-                                focusedBorder: InputBorder.none,
-                              ),
-                              validator: (value) {
-                                if (value?.isEmpty ?? true) {
-                                  return 'enter  name or email';
-                                }
-                                if (_isemail(value!) && !_isname(value)) {
-                                  return 'enter valid name or email';
-                                }
-                                return null;
-                              },
-                              onSaved: (value) {
-                                _value = value;
-                              },
-                            ),
+                        Container(
+                          margin: EdgeInsets.symmetric(vertical: 6),
+                          padding: EdgeInsets.symmetric(horizontal: 10),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(20),
+                            // border: Border.all(
+                            //   color: Color(0xffa84f48),
+                            // ),
                           ),
-                        ),
-                        Expanded(
-                          child: Container(
-                            margin: EdgeInsets.symmetric(vertical: 6),
-                            padding: EdgeInsets.symmetric(horizontal: 10),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(20),
-                              // border: Border.all(
-                              //   color: Color(0xffa84f48),
-                              // ),
-                            ),
-                            height: 45.0,
-                            width: MediaQuery.of(context).size.width * .80,
-                            child: TextFormField(
-                              style:
-                              TextStyle(fontSize: 20, color: Colors.blue),
-                              textAlign: TextAlign.center,
-                              autovalidateMode:
-                              AutovalidateMode.onUserInteraction,
-                              cursorColor: Color(0xffa84f48),
-                              cursorHeight: 24.0,
-                              cursorWidth: 3,
-                              showCursor: true,
-                              obscureText: isTapped,
-                              decoration: InputDecoration(
-                                prefixIcon: Icon(
-                                  LineIcons.lock,
-                                  size: 23,
-                                  color: Color(0xffa84f48),
-                                ),
-                                suffixIcon: IconButton(
-                                  onPressed: () => setState(() {
-                                    isTapped = !isTapped;
-                                  }),
-                                  icon: Icon(
-                                    isTapped
-                                        ? LineIcons.eye
-                                        : LineIcons.eyeSlash,
-                                    color: Color(0xffa84f48),
-                                    size: 30,
-                                  ),
-                                ),
-                                contentPadding: EdgeInsets.only(
-                                  left: 18,
-                                  bottom: 8,
-                                ),
-                                errorBorder: InputBorder.none,
-                                focusedErrorBorder: InputBorder.none,
-                                labelText: 'password',
-                                labelStyle: TextStyle(
-                                  fontSize: 20,
-                                  color: Color(0xffa84f48),
-                                ),
-                                // hintText:
-                                //     'password has to be atleast 8 characters including numbers ,letters and symbols',
-                                floatingLabelBehavior:
-                                FloatingLabelBehavior.never,
-                                enabledBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                        style: BorderStyle.none,
-                                        color: Colors.transparent)),
-                                focusedBorder: InputBorder.none,
+                          height: 44.0,
+                          width: MediaQuery.of(context).size.width * .80,
+                          child: TextFormField(
+                            style: TextStyle(fontSize: 20, color: Colors.blue),
+                            textAlign: TextAlign.center,
+                            textInputAction: TextInputAction.done,
+                            cursorColor: Color(0xffa84f48),
+                            cursorHeight: 24.0,
+                            cursorWidth: 3,
+                            showCursor: true,
+                            autovalidateMode:
+                            AutovalidateMode.onUserInteraction,
+                            controller: _name_email,
+                            decoration: InputDecoration(
+                              prefixIcon: Icon(
+                                LineIcons.envelope,
+                                size: 23,
+                                color: Color(0xffa84f48),
                               ),
-                              validator: (value) {
-                                if (value?.isEmpty ?? true) {
-                                  return '\t\t\t\t\t\t\tplease enter password';
-                                }
-                                final RegExp _pas = RegExp(r'[,./\;'
-                                '[]=*-+_()*&^%#@!0-9<>?:"|{}]');
-                                if (_pas.hasMatch(value!)) {
-                                  return '\t\t\t\t\t\t\tno symbols or numbers';
-                                }
-                                if (value.length < 8) {
-                                  return '\t\t\t\t\t\t\tpassword too short';
-                                }
-                                return null;
-                              },
+                              contentPadding:
+                              EdgeInsets.only(left: 18, bottom: 12, top: 2),
+                              errorBorder: InputBorder.none,
+                              focusedErrorBorder: InputBorder.none,
+                              label: Text('Enter usename or email'),
+                              labelStyle: TextStyle(
+                                overflow: TextOverflow.visible,
+                                fontSize: 20,
+                                color: Color(0xffa84f48),
+                              ),
+                              enabled: true,
+                              floatingLabelBehavior:
+                              FloatingLabelBehavior.never,
+                              enabledBorder: InputBorder.none,
+                              focusedBorder: InputBorder.none,
                             ),
+                            validator: (value) {
+                              if (value?.isEmpty ?? true) {
+                                return 'enter  name or email';
+                              }
+                              if (_isemail(value!) && !_isname(value)) {
+                                return 'enter valid name or email';
+                              }
+                              return null;
+                            },
+                            onSaved: (value) {
+                              _value = value;
+                            },
                           ),
                         ),
                         Container(
-                          margin: EdgeInsets.symmetric(vertical: 4),
+                          margin: EdgeInsets.symmetric(vertical: 6),
+                          padding: EdgeInsets.symmetric(horizontal: 10),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(20),
+                            // border: Border.all(
+                            //   color: Color(0xffa84f48),
+                            // ),
+                          ),
+                          height: 44.0,
+                          width: MediaQuery.of(context).size.width * .80,
+                          child: TextFormField(
+                            style: TextStyle(fontSize: 20, color: Colors.blue),
+                            textAlign: TextAlign.center,
+                            autovalidateMode:
+                            AutovalidateMode.onUserInteraction,
+                            cursorColor: Color(0xffa84f48),
+                            cursorHeight: 24.0,
+                            cursorWidth: 3,
+                            showCursor: true,
+                            obscureText: isTapped,
+                            decoration: InputDecoration(
+                              prefixIcon: Icon(
+                                LineIcons.lock,
+                                size: 23,
+                                color: Color(0xffa84f48),
+                              ),
+                              suffixIcon: IconButton(
+                                onPressed: () => setState(() {
+                                  isTapped = !isTapped;
+                                }),
+                                icon: Icon(
+                                  isTapped ? LineIcons.eye : LineIcons.eyeSlash,
+                                  color: Color(0xffa84f48),
+                                  size: 30,
+                                ),
+                              ),
+                              contentPadding: EdgeInsets.only(
+                                left: 18,
+                                bottom: 8,
+                              ),
+                              errorBorder: InputBorder.none,
+                              focusedErrorBorder: InputBorder.none,
+                              labelText: 'password',
+                              labelStyle: TextStyle(
+                                fontSize: 20,
+                                color: Color(0xffa84f48),
+                              ),
+                              // hintText:
+                              //     'password has to be atleast 8 characters including numbers ,letters and symbols',
+                              floatingLabelBehavior:
+                              FloatingLabelBehavior.never,
+                              enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                      style: BorderStyle.none,
+                                      color: Colors.transparent)),
+                              focusedBorder: InputBorder.none,
+                            ),
+                            validator: (value) {
+                              if (value?.isEmpty ?? true) {
+                                return '\t\t\t\t\t\t\tplease enter password';
+                              }
+                              final RegExp _pas = RegExp(r'[,./\;'
+                              '[]=*-+_()*&^%#@!0-9<>?:"|{}]');
+                              if (_pas.hasMatch(value!)) {
+                                return '\t\t\t\t\t\t\tno symbols or numbers';
+                              }
+                              if (value.length < 8) {
+                                return '\t\t\t\t\t\t\tpassword too short';
+                              }
+                              return null;
+                            },
+                          ),
+                        ),
+
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            TextButton(
+                              onPressed: () {},
+                              child: Text(
+                                'forgot password ?',
+                                style: TextStyle(
+                                    fontSize: 20.0,
+                                    color: Color(0xffa84f48),
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 40,
+                            )
+                          ],
+                        ),
+                        Container(
+                          margin: EdgeInsets.symmetric(vertical: 8),
                           width: 150,
                           child: FloatingActionButton(
                             onPressed: () {
@@ -254,41 +272,50 @@ class _LogInStateState extends State<LogInState> {
                             ),
                           ),
                         ),
+                        // Row(
+                        //   mainAxisAlignment: MainAxisAlignment.center,
+                        //   children: [
+                        //     Text(
+                        //       'forgot password,',
+                        //       style: TextStyle(
+                        //           fontSize: 19.0,
+                        //           color: Color(0xffa84f48),
+                        //           fontWeight: FontWeight.bold),
+                        //     ),
+                        //     TextButton(
+                        //       onPressed: () {},
+                        //       child: Text(
+                        //         'tap here >>',
+                        //         style: TextStyle(
+                        //             fontSize: 20.0,
+                        //             color: Color(0xffa84f48),
+                        //             fontWeight: FontWeight.bold),
+                        //       ),
+                        //     ),
+                        //   ],
+                        // ),
+                        // Text(
+                        //   'or',
+                        //   style: TextStyle(
+                        //       fontSize: 28.0,
+                        //       color: Color(0xffa84f48),
+                        //       fontWeight: FontWeight.bold),
+                        // ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
+                            Divider(height: 3, color: Colors.red),
                             Text(
-                              'forgot password,',
+                              'Continue with',
                               style: TextStyle(
-                                  fontSize: 19.0,
+                                  fontSize: 20.0,
                                   color: Color(0xffa84f48),
                                   fontWeight: FontWeight.bold),
                             ),
-                            TextButton(
-                              onPressed: () {},
-                              child: Text(
-                                'tap here >>',
-                                style: TextStyle(
-                                    fontSize: 20.0,
-                                    color: Color(0xffa84f48),
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ),
+                            Divider(
+                              height: 3,
+                            )
                           ],
-                        ),
-                        Text(
-                          'or',
-                          style: TextStyle(
-                              fontSize: 28.0,
-                              color: Color(0xffa84f48),
-                              fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          'Continue with',
-                          style: TextStyle(
-                              fontSize: 20.0,
-                              color: Color(0xffa84f48),
-                              fontWeight: FontWeight.bold),
                         ),
                         Container(
                           margin: EdgeInsets.only(top: 4, bottom: 4),
