@@ -79,7 +79,7 @@ class _SignInState extends State<SIn> {
                         margin:
                         EdgeInsets.symmetric(vertical: 16, horizontal: 15),
                         child: Text(
-                          'Please log in or sign up to continue',
+                          '\t\tPlease log in or sign up to continue',
                           style: TextStyle(
                             fontSize: 20,
                             color: Color(0xffa84f48),
@@ -150,12 +150,16 @@ class _SignInState extends State<SIn> {
                           )),
 
                       Container(
-                        height: 100,
                         margin: EdgeInsets.only(
-                            left: 10, right: 10, top: 10, bottom: 15),
-                        // EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+                          left: 10,
+                          right: 10,
+                          top: 0,
+                        ),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.white,
+                        ),
                         padding: EdgeInsets.all(8),
-                        color: Colors.white,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -189,9 +193,6 @@ class _SignInState extends State<SIn> {
                           ],
                         ),
                       ),
-                      // SizedBox(
-                      //   height: 10,
-                      // )
                     ],
                   ),
                 ),
