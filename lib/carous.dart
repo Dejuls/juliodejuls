@@ -22,12 +22,10 @@ class _CarPolState extends State<CarPol> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        // backgroundColor: Colors.grey[300],
         drawer: Container(
             height: MediaQuery.of(context).size.height * .97,
             decoration: BoxDecoration(
-                color: Colors.grey[200],
-                borderRadius: BorderRadius.circular(20)),
+                color: Colors.white, borderRadius: BorderRadius.circular(20)),
             margin: EdgeInsets.only(left: 10, top: 8, bottom: 10),
             child: SideNavBar()),
         bottomNavigationBar: GNavBar(),
@@ -51,7 +49,7 @@ class _CarPolState extends State<CarPol> {
                 //     fit: BoxFit.cover,
                 //   ),
                 // ),
-                  floating: true,
+                  floating: false,
 
                   // expandedHeight: 40,
                   title: Text(
@@ -63,7 +61,10 @@ class _CarPolState extends State<CarPol> {
                         fontWeight: FontWeight.bold),
                   ),
                   // leading: IconButton(
-                  //     onPressed: () {},
+                  //     onPressed: () => Navigator.push(
+                  //           context,
+                  //           MaterialPageRoute(builder: (_) => SideNavBar()),
+                  //         ),
                   //     icon: Icon(
                   //       EvaIcons.menu2Outline,
                   //       size: 30,
@@ -100,7 +101,7 @@ class _CarPolState extends State<CarPol> {
                     )
                   ],
                   centerTitle: true,
-                  backgroundColor: Color(0xffe8bab7),
+                  backgroundColor: Colors.grey[200],
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(0),
@@ -131,7 +132,7 @@ class _CarPolState extends State<CarPol> {
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(20),
                         topRight: Radius.circular(20)),
-                    color: Colors.grey[100],
+                    color: Colors.grey[200],
                   ),
                   child: SingleChildScrollView(
                     child: Column(
@@ -140,12 +141,11 @@ class _CarPolState extends State<CarPol> {
                         Search(
                           margin: 4.0,
                         ),
-
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             SizedBox(
-                              width: 4,
+                              width: 14,
                             ),
                             Text(
                               'Getting started',
@@ -169,22 +169,19 @@ class _CarPolState extends State<CarPol> {
                           padding: EdgeInsets.only(
                               left: 10, top: 8, bottom: 8, right: 3),
                           height: 148,
-                          width: MediaQuery.of(context).size.width,
+                          width: MediaQuery.of(context).size.width - 16,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: Color(0xffead4d3).withOpacity(0.7),
-                          ),
-                          child: Flexible(
-                            child: Text(
-                                style: TextStyle(
-                                  // fontFamily: 'BodoniModa',
-                                    fontSize: 18,
-                                    color: Color(0xff985a56),
-                                    fontWeight: FontWeight.w100),
-                                'De juls is a versatile mobile application designed to\n' +
-                                    "Whether you're a seasoned user or new to Dejuls," +
-                                    ' our intuitive interface and features that make it easy for you to'),
-                          ),
+                              borderRadius: BorderRadius.circular(20),
+                              color: Colors.white70),
+                          child: Text(
+                              style: TextStyle(
+                                // fontFamily: 'BodoniModa',
+                                  fontSize: 18,
+                                  color: Colors.black87,
+                                  fontWeight: FontWeight.w400),
+                              'De juls is a versatile mobile application designed to\n' +
+                                  "Whether you're a seasoned user or new to Dejuls," +
+                                  ' our intuitive interface and features that make it easy for you to'),
                         ),
                         SizedBox(
                           height: 6,
@@ -193,7 +190,7 @@ class _CarPolState extends State<CarPol> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             SizedBox(
-                              width: 4,
+                              width: 14,
                             ),
                             Text(
                               'Features',
@@ -213,33 +210,32 @@ class _CarPolState extends State<CarPol> {
                               left: 10, top: 8, bottom: 8, right: 1),
                           margin: EdgeInsets.only(left: 4, right: 4),
                           height: 150,
-                          width: MediaQuery.of(context).size.width,
+                          width: MediaQuery.of(context).size.width - 16,
                           decoration: BoxDecoration(
-                              color: Colors.grey[200],
-                              borderRadius: BorderRadius.circular(20),
-                              boxShadow: [
-                                BoxShadow(
-                                    color: Colors.white,
-                                    offset: Offset(5, -5),
-                                    spreadRadius: 3,
-                                    blurRadius: .1),
-                                BoxShadow(
-                                    color: Colors.white,
-                                    offset: Offset(-5, 5),
-                                    spreadRadius: 3,
-                                    blurRadius: 0.1),
-                              ]),
-                          child: Flexible(
-                            child: Text(
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  // fontFamily: 'BodoniModa',
-                                  fontWeight: FontWeight.w100,
-                                ),
-                                'Feature 1: Brief description of feature 1 \tand its benefit\n' +
-                                    'Feature 2: Brief description of feature 2 and its benefit\n' +
-                                    'Feature 3: Brief description of feature 3 and its benefit'),
+                            color: Colors.white70,
+                            borderRadius: BorderRadius.circular(20),
+                            // boxShadow: [
+                            //   BoxShadow(
+                            //       color: Colors.white,
+                            //       offset: Offset(5, -5),
+                            //       spreadRadius: 3,
+                            //       blurRadius: .1),
+                            //   BoxShadow(
+                            //       color: Colors.white,
+                            //       offset: Offset(-5, 5),
+                            //       spreadRadius: 3,
+                            //       blurRadius: 0.1),
+                            // ]
                           ),
+                          child: Text(
+                              style: TextStyle(
+                                fontSize: 18,
+                                // fontFamily: 'BodoniModa',
+                                fontWeight: FontWeight.w400,
+                              ),
+                              'Feature 1: Brief description of feature 1 \tand its benefit\n' +
+                                  'Feature 2: Brief description of feature 2 and its benefit\n' +
+                                  'Feature 3: Brief description of feature 3 and its benefit'),
                         ),
                         SizedBox(
                           height: 6,
@@ -248,7 +244,7 @@ class _CarPolState extends State<CarPol> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             SizedBox(
-                              width: 4,
+                              width: 14,
                             ),
                             Text(
                               'Why Dejuls?',
@@ -273,32 +269,22 @@ class _CarPolState extends State<CarPol> {
                             borderRadius: BorderRadius.circular(20),
                             color: Color(0xffead4d3).withOpacity(0.7),
                           ),
-                          child: Flexible(
-                            child: Text(
-                                style: TextStyle(
-                                  // fontFamily: 'BodoniModa',
-                                  fontSize: 18,
-                                  color: Color(0xff985a56),
-                                  fontWeight: FontWeight.w100,
-                                ),
-                                'Simplify your [task/activity] with our user-friendly interface' +
-                                    ' ' +
-                                    'Access a wide range of [resources/tools/information] at your fingertips.\n' +
-                                    ' ' +
-                                    'Stay organized and productive with our comprehensive features.'),
-                          ),
+                          child: Text(
+                              style: TextStyle(
+                                // fontFamily: 'BodoniModa',
+                                fontSize: 18,
+                                color: Color(0xff985a56),
+                                fontWeight: FontWeight.w100,
+                              ),
+                              'Simplify your [task/activity] with our user-friendly interface' +
+                                  ' ' +
+                                  'Access a wide range of [resources/tools/information] at your fingertips.\n' +
+                                  ' ' +
+                                  'Stay organized and productive with our comprehensive features.'),
                         ),
                         SizedBox(
                           height: 4,
                         ),
-                        // Text(
-                        //   'Trending',
-                        //   style: TextStyle(
-                        //       fontSize: 30,
-                        //       color: Color(0xff985a56),
-                        //       // backgroundColor: Color(0xffead4d3),
-                        //       fontWeight: FontWeight.bold),
-                        // ),
                         Container(
                           width: MediaQuery.of(context).size.width - 2,
                           padding: EdgeInsets.all(8),
@@ -335,7 +321,7 @@ class _CarPolState extends State<CarPol> {
                           height: 330,
                           margin: EdgeInsets.symmetric(vertical: 10),
                           decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: Colors.red,
                             // color: const Color(0xffead4d3),
                             // borderRadius: BorderRadius.only(
                             //   topLeft: Radius.circular(20),
@@ -344,7 +330,7 @@ class _CarPolState extends State<CarPol> {
                           ),
                           child: CarouselSlider.builder(
                               options: CarouselOptions(
-                                height: 300, viewportFraction: 1,
+                                height: 200, viewportFraction: 1,
                                 pauseAutoPlayOnTouch: true,
                                 autoPlay: true,
                                 reverse: false,

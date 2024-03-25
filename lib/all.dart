@@ -125,7 +125,6 @@ class GNavBar extends StatefulWidget {
 }
 
 class _GNavBarState extends State<GNavBar> {
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -372,7 +371,8 @@ class SideNavBar extends StatefulWidget {
 }
 
 class _SideNavBarState extends State<SideNavBar> {
-  int _selind = 0;
+  int _selind = -1;
+  bool tapu = false;
   Color bef = Colors.white;
   void CambioColor(int index) {
     setState(() {
@@ -382,279 +382,338 @@ class _SideNavBarState extends State<SideNavBar> {
 
   @override
   Widget build(BuildContext context) {
-    return Drawer(
-      backgroundColor: Colors.transparent,
-      child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 0),
-        decoration: BoxDecoration(color: Colors.transparent),
-        child: ListView(
-          children: [
-            SizedBox(
-              height: 10,
-            ),
-            Container(
-              padding: EdgeInsets.all(16),
-              height: 150,
-              width: MediaQuery.of(context).size.width * .8,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  image: DecorationImage(
-                      image: AssetImage('assets/images/22.PNG'),
-                      fit: BoxFit.cover,
-                      opacity: 0.2)),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Column(
-                    children: [
-                      ClipOval(
-                        clipBehavior: Clip.antiAliasWithSaveLayer,
-                        child: AvaTar(
-                          radias: 40,
-                          size: 20,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        height: 6,
-                      ),
-                      Text(
-                        'Julio',
-                        style: TextStyle(fontSize: 18, letterSpacing: 2),
-                      ),
-                      Text('juliodejuls@gmail.com')
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            // UserAccountsDrawerHeader(
-            //     currentAccountPictureSize: Size.square(80),
-            //     margin: EdgeInsets.zero,
-            //     accountName: Container(
-            //       height: 200,
-            //       width: MediaQuery.of(context).size.width,
-            //       color: Colors.red,
-            //       margin: EdgeInsets.only(left: 0),
-            //       child: Row(
-            //         children: [
-            //           ClipOval(
-            //             clipBehavior: Clip.antiAliasWithSaveLayer,
-            //             child: AvaTar(
-            //               radias: 70,
-            //             ),
-            //           ),
-            //           // Column(
-            //           //   children: [
-            //           //     Text(
-            //           //       'Julio',
-            //           //       style: TextStyle(fontSize: 18, letterSpacing: 2),
-            //           //     ),
-            //           //     Text('juliodejuls@gmail.com')
-            //           //   ],
-            //           // ),
-            //         ],
-            //       ),
-            //     ),
-            //     accountEmail: Center(child: Text('juliodejuls@gmail.com')),
-            //     // currentAccountPicture: ClipOval(
-            //     //   clipBehavior: Clip.antiAliasWithSaveLayer,
-            //     //   child: AvaTar(
-            //     //     radias: 70,
-            //     //   ),
-            //     // ),
-            //     decoration: BoxDecoration(
-            //         borderRadius: BorderRadius.circular(20),
-            //         image: DecorationImage(
-            //             image: AssetImage('assets/images/22.PNG'),
-            //             fit: BoxFit.cover,
-            //             opacity: 0.2))),
-            Container(
-              padding: EdgeInsets.all(10),
-              margin: EdgeInsets.symmetric(horizontal: 0, vertical: 13),
-              decoration: BoxDecoration(
-                color: Colors.transparent,
-                borderRadius: BorderRadius.circular(30),
-                border: Border.all(
-                  color: Colors.transparent,
-                ),
-              ),
-              height: MediaQuery.of(context).size.height * .7,
-              width: MediaQuery.of(context).size.width * .7,
-              child: SingleChildScrollView(
-                child: Column(
+    return
+      // Scaffold(
+      // body:
+      Drawer(
+        width: 300,
+        // width: MediaQuery.of(context).size.width - 40,
+        backgroundColor: Colors.grey[100],
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 0),
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
+          child: ListView(
+            children: [
+              Container(
+                height: 150,
+                width: MediaQuery.of(context).size.width,
+                child: Stack(
+                  alignment: Alignment.topCenter,
                   children: [
-                    ListTile(
-                      contentPadding: EdgeInsets.symmetric(horizontal: 15),
-                      leading: _selind == 0
-                          ? Icon(Icons.favorite_rounded,
-                          color: Color(0xff985a56), size: 30)
-                          : Icon(Icons.favorite_outline_outlined,
-                          color: Color(0xffead4d3), size: 25),
-                      title: Text(
-                        'Favorites',
-                        style: TextStyle(
-                          fontSize: 23,
-                          wordSpacing: 16,
-                        ),
-                      ),
-                      tileColor: _selind == 0 ? Color(0xffead4d3) : bef,
-                      selectedTileColor: Color(0xffead4d3),
-                      onTap: () => CambioColor(0),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15),
+                    Container(
+                      height: 150,
+                      width: 300,
+                      child: UserAccountsDrawerHeader(
+                        margin: EdgeInsets.only(left: 10, right: 10, top: 5),
+                        accountName: Text('julio'),
+                        accountEmail: Text('data'),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            image: DecorationImage(
+                                image: AssetImage('assets/images/22.PNG'),
+                                fit: BoxFit.cover,
+                                opacity: 0.2)),
+                        // currentAccountPicture: ClipOval(
+                        //   clipBehavior: Clip.antiAliasWithSaveLayer,
+                        //   child: AvaTar(
+                        //     radias: 40,
+                        //   ),
+                        // ),
                       ),
                     ),
-                    SizedBox(
-                      height: 2,
-                    ),
-                    ListTile(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      leading: _selind == 1
-                          ? Icon(Icons.color_lens_rounded,
-                          color: Color(0xff985a56), size: 30)
-                          : Icon(Icons.color_lens_outlined,
-                          color: Color(0xffead4d3), size: 25),
-                      title: Text(
-                        'Theme',
-                        style: TextStyle(
-                          fontSize: 20,
-                        ),
-                      ),
-                      tileColor: _selind == 1 ? Color(0xffead4d3) : bef,
-                      selectedTileColor: Color(0xffead4d3),
-                      onTap: () => CambioColor(1),
-                    ),
-                    Divider(),
-                    ListTile(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        leading: _selind == 2
-                            ? Icon(Icons.people_outline_rounded,
-                            color: Color(0xff985a56), size: 30)
-                            : Icon(Icons.people_outline_outlined,
-                            color: Color(0xffead4d3), size: 25),
-                        title: Text(
-                          'Contestants',
-                          style: TextStyle(
-                            fontSize: 20,
-                            wordSpacing: 16,
+                    Positioned(
+                      top: 5,
+                      left: 140,
+                      child: Container(
+                          height: 130,
+                          width: 140,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: Colors.pinkAccent,
                           ),
-                        ),
-                        tileColor: _selind == 2 ? Color(0xffead4d3) : bef,
-                        selectedTileColor: Color(0xffead4d3),
-                        onTap: () => CambioColor(2)),
-                    SizedBox(
-                      height: 4,
-                    ),
-                    ListTile(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      leading: _selind == 3
-                          ? Icon(Icons.question_answer_rounded,
-                          color: Color(0xff985a56), size: 30)
-                          : Icon(Icons.question_answer_outlined,
-                          color: Color(0xffead4d3), size: 25),
-                      title: Text(
-                        'FAQ',
-                        style: TextStyle(
-                          fontSize: 20,
-                          wordSpacing: 16,
-                        ),
-                      ),
-                      tileColor: _selind == 3 ? Color(0xffead4d3) : bef,
-                      selectedTileColor: Color(0xffead4d3),
-                      onTap: () => CambioColor(3),
-                    ),
-                    SizedBox(
-                      height: 4,
-                    ),
-                    ListTile(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      leading: _selind == 4
-                          ? Icon(Icons.feedback_rounded,
-                          color: Color(0xff985a56), size: 30)
-                          : Icon(Icons.feedback_outlined,
-                          color: Color(0xffead4d3), size: 25),
-                      title: Text(
-                        'Feedback',
-                        style: TextStyle(
-                          fontSize: 20,
-                          wordSpacing: 16,
-                        ),
-                      ),
-                      tileColor: _selind == 4 ? Color(0xffead4d3) : bef,
-                      selectedTileColor: Color(0xffead4d3),
-                      onTap: () {
-                        CambioColor(4);
-                      },
-                    ),
-                    Divider(),
-                    ListTile(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      leading: _selind == 5
-                          ? Icon(Icons.build_rounded,
-                          color: Color(0xff985a56), size: 30)
-                          : Icon(Icons.build_outlined,
-                          color: Color(0xffead4d3), size: 25),
-                      title: Text(
-                        'Settings',
-                        style: TextStyle(
-                          fontSize: 20,
-                          wordSpacing: 16,
-                        ),
-                      ),
-                      tileColor: _selind == 5 ? Color(0xffead4d3) : bef,
-                      selectedTileColor: Color(0xffead4d3),
-                      onTap: () {
-                        CambioColor(5);
-                      },
-                    ),
-                    SizedBox(
-                      height: 2,
-                    ),
-                    ListTile(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      leading: _selind == 6
-                          ? Icon(Icons.exit_to_app_rounded,
-                          color: Color(0xff985a56), size: 30)
-                          : Icon(Icons.exit_to_app_outlined,
-                          color: Color(0xffead4d3), size: 25),
-                      title: Text(
-                        'Logout',
-                        style: TextStyle(
-                          fontSize: 20,
-                          wordSpacing: 16,
-                        ),
-                      ),
-                      tileColor: _selind == 6 ? Color(0xffead4d3) : bef,
-                      selectedTileColor: Color(0xffead4d3),
-                      onTap: () {
-                        CambioColor(6);
-                      },
-                    ),
+                          child: Align(
+                            alignment: Alignment.center,
+                            child: AvaTar(
+                              radias: 40,
+                            ),
+                          )),
+                    )
                   ],
                 ),
               ),
-            ),
-          ],
+              SizedBox(
+                height: 10,
+              ),
+              Container(
+                padding: EdgeInsets.all(10),
+                margin: EdgeInsets.symmetric(horizontal: 0, vertical: 13),
+                decoration: BoxDecoration(
+                  color: Colors.transparent,
+                  borderRadius: BorderRadius.circular(30),
+                  border: Border.all(
+                    color: Colors.transparent,
+                  ),
+                ),
+                height: MediaQuery.of(context).size.height * .7,
+                width: MediaQuery.of(context).size.width * .7,
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Container(
+                        width: 300,
+                        height: tapu == true && _selind == 0 ? 70 : 50,
+                        decoration: BoxDecoration(
+                          color: _selind == 2 ? Color(0xffead4d3) : bef,
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: ListTile(
+                          // subtitle: tapu == true ? Text('data') : Text(''),
+                          // isThreeLine: tapu,
+                          leading: _selind == 0
+                              ? Icon(Icons.favorite_rounded,
+                              color: Color(0xff985a56), size: 30)
+                              : Icon(Icons.favorite_outline_outlined,
+                              color: Color(0xffead4d3), size: 25),
+                          title: Text(
+                            'Favorites',
+                            style: TextStyle(
+                              fontSize: 23,
+                              wordSpacing: 16,
+                            ),
+                          ),
+                          tileColor: _selind == 0 ? Color(0xffead4d3) : bef,
+                          selectedTileColor: Color(0xffead4d3),
+                          onTap: () {
+                            CambioColor(0);
+                            setState(() {
+                              tapu = !tapu;
+                            });
+                          },
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 2,
+                      ),
+                      Container(
+                        width: 300,
+                        height: tapu == true && _selind == 1 ? 70 : 50,
+                        decoration: BoxDecoration(
+                          color: _selind == 2 ? Color(0xffead4d3) : bef,
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: ListTile(
+                          // subtitle: Text('htrfh'),
+                          // isThreeLine: tapu,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          leading: _selind == 1
+                              ? Icon(Icons.color_lens_rounded,
+                              color: Color(0xff985a56), size: 30)
+                              : Icon(Icons.color_lens_outlined,
+                              color: Color(0xffead4d3), size: 25),
+                          title: Text(
+                            'Theme',
+                            style: TextStyle(
+                              fontSize: 20,
+                            ),
+                          ),
+                          tileColor: _selind == 1 ? Color(0xffead4d3) : bef,
+                          selectedTileColor: Color(0xffead4d3),
+                          onTap: () => CambioColor(1),
+                        ),
+                      ),
+                      Divider(
+                        color: Colors.transparent,
+                      ),
+                      Container(
+                        decoration: BoxDecoration(color: Colors.grey[200]),
+                        child: Column(
+                          children: [
+                            Container(
+                              width: 300,
+                              height: tapu == true && _selind == 2 ? 70 : 50,
+                              decoration: BoxDecoration(
+                                color: _selind == 2 ? Color(0xffead4d3) : bef,
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              child: ListTile(
+                                  leading: _selind == 2
+                                      ? Icon(Icons.people_outline_rounded,
+                                      color: Color(0xff985a56), size: 30)
+                                      : Icon(Icons.people_outline_outlined,
+                                      color: Color(0xffead4d3), size: 25),
+                                  title: Text(
+                                    'Contestants',
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                      wordSpacing: 16,
+                                    ),
+                                  ),
+                                  onTap: () {
+                                    CambioColor(2);
+                                    setState(() {
+                                      tapu = !tapu;
+                                    });
+                                  }),
+                            ),
+                            SizedBox(
+                              height: 4,
+                            ),
+                            Container(
+                              width: 300,
+                              height: tapu == true && _selind == 3 ? 70 : 50,
+                              decoration: BoxDecoration(
+                                color: _selind == 2 ? Color(0xffead4d3) : bef,
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              child: ListTile(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                leading: _selind == 3
+                                    ? Icon(Icons.question_answer_rounded,
+                                    color: Color(0xff985a56), size: 30)
+                                    : Icon(Icons.question_answer_outlined,
+                                    color: Color(0xffead4d3), size: 25),
+                                title: Text(
+                                  'FAQ',
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    wordSpacing: 16,
+                                  ),
+                                ),
+                                tileColor: _selind == 3 ? Color(0xffead4d3) : bef,
+                                selectedTileColor: Color(0xffead4d3),
+                                onTap: () {
+                                  CambioColor(3);
+                                  setState(() {
+                                    tapu = !tapu;
+                                  });
+                                },
+                              ),
+                            ),
+                            SizedBox(
+                              height: 4,
+                            ),
+                            Container(
+                              width: 300,
+                              height: tapu == true && _selind == 4 ? 70 : 50,
+                              decoration: BoxDecoration(
+                                color: _selind == 2 ? Color(0xffead4d3) : bef,
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              child: ListTile(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15),
+                                  ),
+                                  leading: _selind == 4
+                                      ? Icon(Icons.feedback_rounded,
+                                      color: Color(0xff985a56), size: 30)
+                                      : Icon(Icons.feedback_outlined,
+                                      color: Color(0xffead4d3), size: 25),
+                                  title: Text(
+                                    'Feedback',
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                      wordSpacing: 16,
+                                    ),
+                                  ),
+                                  tileColor:
+                                  _selind == 4 ? Color(0xffead4d3) : bef,
+                                  selectedTileColor: Color(0xffead4d3),
+                                  onTap: () {
+                                    CambioColor(4);
+                                    setState(() {
+                                      tapu = !tapu;
+                                    });
+                                  }),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Divider(
+                        color: Colors.transparent,
+                      ),
+                      Container(
+                        width: 300,
+                        height: tapu == true && _selind == 5 ? 70 : 50,
+                        decoration: BoxDecoration(
+                          color: _selind == 2 ? Color(0xffead4d3) : bef,
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: ListTile(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            leading: _selind == 5
+                                ? Icon(Icons.build_rounded,
+                                color: Color(0xff985a56), size: 30)
+                                : Icon(Icons.build_outlined,
+                                color: Color(0xffead4d3), size: 25),
+                            title: Text(
+                              'Settings',
+                              style: TextStyle(
+                                fontSize: 20,
+                                wordSpacing: 16,
+                              ),
+                            ),
+                            tileColor: _selind == 5 ? Color(0xffead4d3) : bef,
+                            selectedTileColor: Color(0xffead4d3),
+                            onTap: () {
+                              CambioColor(5);
+                              setState(() {
+                                tapu = !tapu;
+                              });
+                            }),
+                      ),
+                      SizedBox(
+                        height: 2,
+                      ),
+                      Container(
+                        width: 300,
+                        height: tapu == true && _selind == 6 ? 70 : 50,
+                        decoration: BoxDecoration(
+                          color: _selind == 2 ? Color(0xffead4d3) : bef,
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: ListTile(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            leading: _selind == 6
+                                ? Icon(Icons.exit_to_app_rounded,
+                                color: Color(0xff985a56), size: 30)
+                                : Icon(Icons.exit_to_app_outlined,
+                                color: Color(0xffead4d3), size: 25),
+                            title: Text(
+                              'Logout',
+                              style: TextStyle(
+                                fontSize: 20,
+                                wordSpacing: 16,
+                              ),
+                            ),
+                            tileColor: _selind == 6 ? Color(0xffead4d3) : bef,
+                            selectedTileColor: Color(0xffead4d3),
+                            onTap: () {
+                              CambioColor(6);
+                              setState(() {
+                                tapu = !tapu;
+                              });
+                            }),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
-      ),
-    );
+        //),
+      );
   }
 }
 
@@ -674,9 +733,10 @@ class _SearchState extends State<Search> {
       padding: EdgeInsets.only(top: 0),
       margin: EdgeInsets.only(
           left: widget.margin, right: widget.margin, top: 6, bottom: 9),
-      width: MediaQuery.of(context).size.width * .99,
+      width: MediaQuery.of(context).size.width - 20,
       decoration: BoxDecoration(
-          color: Color(0xffead4d3).withOpacity(.4),
+          color: Colors.white60,
+          // (0xffead4d3).withOpacity(.4),
           borderRadius: BorderRadius.circular(20)),
       child: TextFormField(
         style: TextStyle(fontFamily: 'Anta', color: Colors.blue, fontSize: 25),
@@ -708,6 +768,85 @@ class _SearchState extends State<Search> {
           errorBorder: InputBorder.none,
           contentPadding: EdgeInsets.only(left: 20, bottom: 5),
         ),
+      ),
+    );
+  }
+}
+
+class MyFormField extends StatelessWidget {
+  final controller;
+  final Function(String)? onChanged;
+  final String? Function(String?)? validator;
+  final dynamic prefixIcon;
+  dynamic? suffixIcon;
+  final obscure;
+  final String label;
+  final Function(String?)? onSaved;
+  MyFormField({
+    Key? key,
+    required this.label,
+    required this.controller,
+    this.obscure,
+    this.suffixIcon,
+    required this.prefixIcon,
+    this.onSaved,
+    required this.onChanged,
+    required this.validator,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 4),
+      decoration: BoxDecoration(
+        color: Colors.white70,
+        borderRadius: BorderRadius.circular(20),
+        // border: Border.all(
+        //   color: Color(0xffa84f48),
+        //   width: 2,
+        // ),
+      ),
+      height: 46,
+      width: MediaQuery.of(context).size.width * .80,
+      child: TextFormField(
+        style: TextStyle(
+            fontFamily: 'ShadowsIntoLight',
+            fontSize: 20,
+            letterSpacing: 4,
+            color: Colors.blue),
+        textAlign: TextAlign.center,
+        textInputAction: TextInputAction.done,
+        controller: controller,
+        decoration: InputDecoration(
+          contentPadding: EdgeInsets.only(left: 18, bottom: 11, top: 2),
+          prefixIcon: prefixIcon,
+          label: Text(
+            label,
+            overflow: TextOverflow.ellipsis,
+          ),
+          suffixIcon: suffixIcon,
+          errorBorder: InputBorder.none,
+          focusedErrorBorder: InputBorder.none,
+          enabledBorder: InputBorder.none,
+          focusedBorder: InputBorder.none,
+          floatingLabelBehavior: FloatingLabelBehavior.never,
+          enabled: true,
+          labelStyle: TextStyle(
+            fontSize: 20,
+            letterSpacing: 5,
+            fontFamily: 'Anta',
+            color: Color(0xffa84f48),
+            fontWeight: FontWeight.normal,
+          ),
+        ),
+        onChanged: onChanged,
+        cursorColor: Color(0xffa84f48),
+        cursorHeight: 24.0,
+        cursorWidth: 3,
+        showCursor: true,
+        keyboardType: TextInputType.name,
+        validator: validator,
+        obscureText: obscure,
       ),
     );
   }
