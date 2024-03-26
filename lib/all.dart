@@ -388,7 +388,7 @@ class _SideNavBarState extends State<SideNavBar> {
       Drawer(
         width: 300,
         // width: MediaQuery.of(context).size.width - 40,
-        backgroundColor: Colors.grey[100],
+        backgroundColor: Colors.white,
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 0),
           decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
@@ -413,12 +413,6 @@ class _SideNavBarState extends State<SideNavBar> {
                                 image: AssetImage('assets/images/22.PNG'),
                                 fit: BoxFit.cover,
                                 opacity: 0.2)),
-                        // currentAccountPicture: ClipOval(
-                        //   clipBehavior: Clip.antiAliasWithSaveLayer,
-                        //   child: AvaTar(
-                        //     radias: 40,
-                        //   ),
-                        // ),
                       ),
                     ),
                     Positioned(
@@ -441,12 +435,12 @@ class _SideNavBarState extends State<SideNavBar> {
                   ],
                 ),
               ),
-              SizedBox(
-                height: 10,
-              ),
+              // SizedBox(
+              //   height: 10,
+              // ),
               Container(
-                padding: EdgeInsets.all(10),
-                margin: EdgeInsets.symmetric(horizontal: 0, vertical: 13),
+                padding: EdgeInsets.all(5),
+                margin: EdgeInsets.symmetric(horizontal: 0, vertical: 3),
                 decoration: BoxDecoration(
                   color: Colors.transparent,
                   borderRadius: BorderRadius.circular(30),
@@ -460,8 +454,8 @@ class _SideNavBarState extends State<SideNavBar> {
                   child: Column(
                     children: [
                       Container(
-                        width: 300,
-                        height: tapu == true && _selind == 0 ? 70 : 50,
+                        width: MediaQuery.of(context).size.width * .72,
+                        height: 50,
                         decoration: BoxDecoration(
                           color: _selind == 2 ? Color(0xffead4d3) : bef,
                           borderRadius: BorderRadius.circular(15),
@@ -498,8 +492,8 @@ class _SideNavBarState extends State<SideNavBar> {
                         height: 2,
                       ),
                       Container(
-                        width: 300,
-                        height: tapu == true && _selind == 1 ? 70 : 50,
+                        width: MediaQuery.of(context).size.width * .72,
+                        height: 50,
                         decoration: BoxDecoration(
                           color: _selind == 2 ? Color(0xffead4d3) : bef,
                           borderRadius: BorderRadius.circular(15),
@@ -530,12 +524,17 @@ class _SideNavBarState extends State<SideNavBar> {
                         color: Colors.transparent,
                       ),
                       Container(
-                        decoration: BoxDecoration(color: Colors.grey[200]),
+                        padding: EdgeInsets.all(8),
+                        height: MediaQuery.of(context).size.height * .28,
+                        width: MediaQuery.of(context).size.width - 4,
+                        decoration: BoxDecoration(
+                            color: Colors.grey[300],
+                            borderRadius: BorderRadius.circular(30)),
                         child: Column(
                           children: [
                             Container(
-                              width: 300,
-                              height: tapu == true && _selind == 2 ? 70 : 50,
+                              width: MediaQuery.of(context).size.width * .72,
+                              height: 50,
                               decoration: BoxDecoration(
                                 color: _selind == 2 ? Color(0xffead4d3) : bef,
                                 borderRadius: BorderRadius.circular(15),
@@ -564,8 +563,8 @@ class _SideNavBarState extends State<SideNavBar> {
                               height: 4,
                             ),
                             Container(
-                              width: 300,
-                              height: tapu == true && _selind == 3 ? 70 : 50,
+                              width: MediaQuery.of(context).size.width * .72,
+                              height: 50,
                               decoration: BoxDecoration(
                                 color: _selind == 2 ? Color(0xffead4d3) : bef,
                                 borderRadius: BorderRadius.circular(15),
@@ -600,8 +599,8 @@ class _SideNavBarState extends State<SideNavBar> {
                               height: 4,
                             ),
                             Container(
-                              width: 300,
-                              height: tapu == true && _selind == 4 ? 70 : 50,
+                              width: MediaQuery.of(context).size.width * .72,
+                              height: 50,
                               decoration: BoxDecoration(
                                 color: _selind == 2 ? Color(0xffead4d3) : bef,
                                 borderRadius: BorderRadius.circular(15),
@@ -635,76 +634,90 @@ class _SideNavBarState extends State<SideNavBar> {
                           ],
                         ),
                       ),
-                      Divider(
-                        color: Colors.transparent,
-                      ),
+                      // Divider(
+                      //   color: Colors.transparent,
+                      // ),
                       Container(
-                        width: 300,
-                        height: tapu == true && _selind == 5 ? 70 : 50,
+                        margin: EdgeInsets.only(top: 4),
+                        padding: EdgeInsets.all(8),
+                        height: MediaQuery.of(context).size.height * .2,
+                        width: MediaQuery.of(context).size.width - 4,
                         decoration: BoxDecoration(
-                          color: _selind == 2 ? Color(0xffead4d3) : bef,
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: ListTile(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            leading: _selind == 5
-                                ? Icon(Icons.build_rounded,
-                                color: Color(0xff985a56), size: 30)
-                                : Icon(Icons.build_outlined,
-                                color: Color(0xffead4d3), size: 25),
-                            title: Text(
-                              'Settings',
-                              style: TextStyle(
-                                fontSize: 20,
-                                wordSpacing: 16,
+                            border: Border.all(color: Colors.grey, width: 4)),
+                        child: Column(
+                          children: [
+                            Container(
+                              width: MediaQuery.of(context).size.width * .72,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                color: _selind == 2 ? Color(0xffead4d3) : bef,
+                                borderRadius: BorderRadius.circular(15),
                               ),
+                              child: ListTile(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15),
+                                  ),
+                                  leading: _selind == 5
+                                      ? Icon(Icons.build_rounded,
+                                      color: Color(0xff985a56), size: 30)
+                                      : Icon(Icons.build_outlined,
+                                      color: Color(0xffead4d3), size: 25),
+                                  title: Text(
+                                    'Settings',
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                      wordSpacing: 16,
+                                    ),
+                                  ),
+                                  tileColor:
+                                  _selind == 5 ? Color(0xffead4d3) : bef,
+                                  selectedTileColor: Color(0xffead4d3),
+                                  onTap: () {
+                                    CambioColor(5);
+                                    setState(() {
+                                      tapu = !tapu;
+                                    });
+                                  }),
                             ),
-                            tileColor: _selind == 5 ? Color(0xffead4d3) : bef,
-                            selectedTileColor: Color(0xffead4d3),
-                            onTap: () {
-                              CambioColor(5);
-                              setState(() {
-                                tapu = !tapu;
-                              });
-                            }),
-                      ),
-                      SizedBox(
-                        height: 2,
-                      ),
-                      Container(
-                        width: 300,
-                        height: tapu == true && _selind == 6 ? 70 : 50,
-                        decoration: BoxDecoration(
-                          color: _selind == 2 ? Color(0xffead4d3) : bef,
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: ListTile(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15),
+                            SizedBox(
+                              height: 2,
                             ),
-                            leading: _selind == 6
-                                ? Icon(Icons.exit_to_app_rounded,
-                                color: Color(0xff985a56), size: 30)
-                                : Icon(Icons.exit_to_app_outlined,
-                                color: Color(0xffead4d3), size: 25),
-                            title: Text(
-                              'Logout',
-                              style: TextStyle(
-                                fontSize: 20,
-                                wordSpacing: 16,
+                            Container(
+                              width: MediaQuery.of(context).size.width * .72,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                color: _selind == 2 ? Color(0xffead4d3) : bef,
+                                borderRadius: BorderRadius.circular(15),
                               ),
+                              child: ListTile(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15),
+                                  ),
+                                  leading: _selind == 6
+                                      ? Icon(Icons.exit_to_app_rounded,
+                                      color: Color(0xff985a56), size: 30)
+                                      : Icon(Icons.exit_to_app_outlined,
+                                      color: Color(0xffead4d3), size: 25),
+                                  title: Text(
+                                    'Logout',
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                      wordSpacing: 16,
+                                    ),
+                                  ),
+                                  tileColor:
+                                  _selind == 6 ? Color(0xffead4d3) : bef,
+                                  selectedTileColor: Color(0xffead4d3),
+                                  onTap: () {
+                                    CambioColor(6);
+                                    setState(() {
+                                      tapu = !tapu;
+                                    });
+                                  }),
                             ),
-                            tileColor: _selind == 6 ? Color(0xffead4d3) : bef,
-                            selectedTileColor: Color(0xffead4d3),
-                            onTap: () {
-                              CambioColor(6);
-                              setState(() {
-                                tapu = !tapu;
-                              });
-                            }),
-                      ),
+                          ],
+                        ),
+                      )
                     ],
                   ),
                 ),
