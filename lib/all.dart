@@ -388,7 +388,7 @@ class _SideNavBarState extends State<SideNavBar> {
       Drawer(
         width: 300,
         // width: MediaQuery.of(context).size.width - 40,
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.grey[200],
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 0),
           decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
@@ -525,10 +525,10 @@ class _SideNavBarState extends State<SideNavBar> {
                       ),
                       Container(
                         padding: EdgeInsets.all(8),
-                        height: MediaQuery.of(context).size.height * .28,
+                        height: MediaQuery.of(context).size.height * .24,
                         width: MediaQuery.of(context).size.width - 4,
                         decoration: BoxDecoration(
-                            color: Colors.grey[300],
+                            color: Colors.white,
                             borderRadius: BorderRadius.circular(30)),
                         child: Column(
                           children: [
@@ -536,7 +536,7 @@ class _SideNavBarState extends State<SideNavBar> {
                               width: MediaQuery.of(context).size.width * .72,
                               height: 50,
                               decoration: BoxDecoration(
-                                color: _selind == 2 ? Color(0xffead4d3) : bef,
+                                color: _selind == 2 ? Color(0xffead4d3) : Colors.grey[100],
                                 borderRadius: BorderRadius.circular(15),
                               ),
                               child: ListTile(
@@ -566,7 +566,7 @@ class _SideNavBarState extends State<SideNavBar> {
                               width: MediaQuery.of(context).size.width * .72,
                               height: 50,
                               decoration: BoxDecoration(
-                                color: _selind == 2 ? Color(0xffead4d3) : bef,
+                                color: _selind == 2 ? Color(0xffead4d3) : Colors.grey[100],
                                 borderRadius: BorderRadius.circular(15),
                               ),
                               child: ListTile(
@@ -585,7 +585,7 @@ class _SideNavBarState extends State<SideNavBar> {
                                     wordSpacing: 16,
                                   ),
                                 ),
-                                tileColor: _selind == 3 ? Color(0xffead4d3) : bef,
+
                                 selectedTileColor: Color(0xffead4d3),
                                 onTap: () {
                                   CambioColor(3);
@@ -602,7 +602,7 @@ class _SideNavBarState extends State<SideNavBar> {
                               width: MediaQuery.of(context).size.width * .72,
                               height: 50,
                               decoration: BoxDecoration(
-                                color: _selind == 2 ? Color(0xffead4d3) : bef,
+                                color: _selind == 2 ? Color(0xffead4d3) : Colors.grey[100],
                                 borderRadius: BorderRadius.circular(15),
                               ),
                               child: ListTile(
@@ -621,8 +621,7 @@ class _SideNavBarState extends State<SideNavBar> {
                                       wordSpacing: 16,
                                     ),
                                   ),
-                                  tileColor:
-                                  _selind == 4 ? Color(0xffead4d3) : bef,
+
                                   selectedTileColor: Color(0xffead4d3),
                                   onTap: () {
                                     CambioColor(4);
