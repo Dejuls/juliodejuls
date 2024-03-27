@@ -25,7 +25,8 @@ class _CarPolState extends State<CarPol> {
         drawer: Container(
             height: MediaQuery.of(context).size.height * .97,
             decoration: BoxDecoration(
-                color: Colors.white, borderRadius: BorderRadius.circular(20)),
+              //color: Colors.white,
+                borderRadius: BorderRadius.circular(20)),
             margin: EdgeInsets.only(left: 10, top: 8, bottom: 10),
             child: SideNavBar()),
         bottomNavigationBar: GNavBar(),

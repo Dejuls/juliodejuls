@@ -382,350 +382,412 @@ class _SideNavBarState extends State<SideNavBar> {
 
   @override
   Widget build(BuildContext context) {
-    return
-      // Scaffold(
-      // body:
-      Drawer(
-        width: 300,
-        // width: MediaQuery.of(context).size.width - 40,
-        backgroundColor: Colors.grey[200],
-        child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 0),
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
-          child: ListView(
-            children: [
-              Container(
-                height: 150,
-                width: MediaQuery.of(context).size.width,
-                child: Stack(
-                  alignment: Alignment.topCenter,
+    return Drawer(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      width: 300,
+      // width: MediaQuery.of(context).size.width - 40,
+      backgroundColor: Colors.transparent,
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 0),
+        decoration: BoxDecoration(),
+        child: ListView(
+          physics: NeverScrollableScrollPhysics(),
+          children: [
+            Container(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height / 1.35,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(0),
+                color: Colors.grey[200],
+              ),
+              child: SingleChildScrollView(
+                physics: NeverScrollableScrollPhysics(),
+                child: Column(
                   children: [
                     Container(
                       height: 150,
-                      width: 300,
-                      child: UserAccountsDrawerHeader(
-                        margin: EdgeInsets.only(left: 10, right: 10, top: 5),
-                        accountName: Text('julio'),
-                        accountEmail: Text('data'),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            image: DecorationImage(
-                                image: AssetImage('assets/images/22.PNG'),
-                                fit: BoxFit.cover,
-                                opacity: 0.2)),
+                      width: MediaQuery.of(context).size.width,
+                      child: Stack(
+                        alignment: Alignment.topCenter,
+                        children: [
+                          Container(
+                            height: 150,
+                            width: MediaQuery.of(context).size.width * 72,
+                            child: UserAccountsDrawerHeader(
+                              margin:
+                              EdgeInsets.only(left: 10, right: 10, top: 5),
+                              accountName: Text('julio'),
+                              accountEmail: Text('data'),
+                              currentAccountPicture: ClipRRect(child: AvaTar()),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20),
+                                  image: DecorationImage(
+                                      image: AssetImage('assets/images/22.PNG'),
+                                      fit: BoxFit.cover,
+                                      opacity: 0.2)),
+                            ),
+                          ),
+                          // Positioned(
+                          //   top: 5,
+                          //   left: 140,
+                          //   child: Container(
+                          //       height: 130,
+                          //       width: 140,
+                          //       decoration: BoxDecoration(
+                          //         borderRadius: BorderRadius.circular(20),
+                          //         color: Colors.pinkAccent,
+                          //       ),
+                          //       child: Align(
+                          //         alignment: Alignment(-1, -1),
+                          //         child: AvaTar(
+                          //           radias: 40,
+                          //         ),
+                          //       )),
+                          // ),
+                        ],
                       ),
                     ),
-                    Positioned(
-                      top: 5,
-                      left: 140,
-                      child: Container(
-                          height: 130,
-                          width: 140,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: Colors.pinkAccent,
-                          ),
-                          child: Align(
-                            alignment: Alignment.center,
-                            child: AvaTar(
-                              radias: 40,
+                    Container(
+                      padding: EdgeInsets.all(5),
+                      margin: EdgeInsets.symmetric(horizontal: 0, vertical: 3),
+                      decoration: BoxDecoration(
+                        color: Colors.transparent,
+                        borderRadius: BorderRadius.circular(30),
+                        border: Border.all(
+                          color: Colors.transparent,
+                        ),
+                      ),
+                      height: MediaQuery.of(context).size.height * .7,
+                      width: MediaQuery.of(context).size.width,
+                      child: SingleChildScrollView(
+                        physics: NeverScrollableScrollPhysics(),
+                        child: Column(
+                          children: [
+                            Container(
+                              height: 115,
+                              padding: EdgeInsets.all(5),
+                              color: Colors.grey[200],
+                              child: SingleChildScrollView(
+                                physics: const NeverScrollableScrollPhysics(),
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      width: MediaQuery.of(context).size.width *
+                                          .72,
+                                      height: 50,
+                                      decoration: BoxDecoration(
+                                        color: _selind == 0
+                                            ? Color(0xffead4d3)
+                                            : bef,
+                                        borderRadius: BorderRadius.circular(15),
+                                      ),
+                                      child: ListTile(
+                                        leading: _selind == 0
+                                            ? Icon(Icons.favorite_rounded,
+                                            color: Color(0xff985a56),
+                                            size: 30)
+                                            : Icon(
+                                            Icons.favorite_outline_outlined,
+                                            color: Color(0xff985a56),
+                                            size: 25),
+                                        title: Text(
+                                          'Favorites',
+                                          style: TextStyle(
+                                            fontSize: 23,
+                                            wordSpacing: 16,
+                                          ),
+                                        ),
+                                        selectedTileColor: Color(0xffead4d3),
+                                        onTap: () {
+                                          CambioColor(0);
+                                          setState(() {
+                                            tapu = !tapu;
+                                          });
+                                        },
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                          BorderRadius.circular(15),
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 2,
+                                    ),
+                                    Container(
+                                      width: MediaQuery.of(context).size.width *
+                                          .72,
+                                      height: 50,
+                                      decoration: BoxDecoration(
+                                        color: _selind == 1
+                                            ? Color(0xffead4d3)
+                                            : bef,
+                                        borderRadius: BorderRadius.circular(15),
+                                      ),
+                                      child: ListTile(
+                                        // subtitle: Text('htrfh'),
+                                        // isThreeLine: tapu,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                          BorderRadius.circular(15),
+                                        ),
+                                        leading: _selind == 1
+                                            ? Icon(Icons.color_lens_rounded,
+                                            color: Color(0xff985a56),
+                                            size: 30)
+                                            : Icon(Icons.color_lens_outlined,
+                                            color: Color(0xff985a56),
+                                            size: 25),
+                                        title: Text(
+                                          'Theme',
+                                          style: TextStyle(
+                                            fontSize: 20,
+                                          ),
+                                        ),
+
+                                        onTap: () {
+                                          CambioColor(1);
+                                          setState(() {
+                                            tapu = !tapu;
+                                          });
+                                        },
+                                      ),
+                                    ),
+                                    Divider(
+                                      color: Colors.transparent,
+                                    ),
+                                  ],
+                                ),
+                              ),
                             ),
-                          )),
-                    )
+                            Divider(color: Colors.transparent),
+                            Container(
+                              padding: EdgeInsets.all(8.0),
+                              height: MediaQuery.of(context).size.height * .275,
+                              width: MediaQuery.of(context).size.width,
+                              decoration: BoxDecoration(
+                                  color: Colors.white60,
+                                  borderRadius: BorderRadius.circular(0)),
+                              child: SingleChildScrollView(
+                                physics: NeverScrollableScrollPhysics(),
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      width: MediaQuery.of(context).size.width *
+                                          .72,
+                                      height: 50,
+                                      decoration: BoxDecoration(
+                                        color: _selind == 2
+                                            ? Colors.grey[300]
+                                            : Colors.grey[300],
+                                        borderRadius: BorderRadius.circular(15),
+                                      ),
+                                      child: ListTile(
+                                          leading: _selind == 2
+                                              ? Icon(
+                                              Icons.people_outline_rounded,
+                                              color: Color(0xff985a56),
+                                              size: 30)
+                                              : Icon(
+                                              Icons.people_outline_outlined,
+                                              color: Color(0xff985a56),
+                                              size: 25),
+                                          title: Text(
+                                            'Contestants',
+                                            style: TextStyle(
+                                              fontSize: 20,
+                                              wordSpacing: 16,
+                                            ),
+                                          ),
+                                          onTap: () {
+                                            CambioColor(2);
+                                            setState(() {
+                                              tapu = !tapu;
+                                            });
+                                          }),
+                                    ),
+                                    SizedBox(
+                                      height: 4,
+                                    ),
+                                    Container(
+                                      width: MediaQuery.of(context).size.width *
+                                          .72,
+                                      height: 50,
+                                      decoration: BoxDecoration(
+                                        color: _selind == 3
+                                            ? Colors.grey[300]
+                                            : Colors.grey[300],
+                                        borderRadius: BorderRadius.circular(15),
+                                      ),
+                                      child: ListTile(
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                          BorderRadius.circular(10),
+                                        ),
+                                        leading: _selind == 3
+                                            ? Icon(
+                                            Icons.question_answer_rounded,
+                                            color: Color(0xff985a56),
+                                            size: 30)
+                                            : Icon(
+                                            Icons.question_answer_outlined,
+                                            color: Color(0xff985a56),
+                                            size: 25),
+                                        title: Text(
+                                          'FAQ',
+                                          style: TextStyle(
+                                            fontSize: 20,
+                                            wordSpacing: 16,
+                                          ),
+                                        ),
+                                        selectedTileColor: Color(0xffead4d3),
+                                        onTap: () {
+                                          CambioColor(3);
+                                          setState(() {
+                                            tapu = !tapu;
+                                          });
+                                        },
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 4,
+                                    ),
+                                    Container(
+                                      width: MediaQuery.of(context).size.width *
+                                          .72,
+                                      height: 50,
+                                      decoration: BoxDecoration(
+                                        color: _selind == 4
+                                            ? Colors.grey[300]
+                                            : Colors.grey[300],
+                                        borderRadius: BorderRadius.circular(15),
+                                      ),
+                                      child: ListTile(
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                            BorderRadius.circular(15),
+                                          ),
+                                          leading: _selind == 4
+                                              ? Icon(Icons.feedback_rounded,
+                                              color: Color(0xff985a56),
+                                              size: 30)
+                                              : Icon(Icons.feedback_outlined,
+                                              color: Color(0xff985a56),
+                                              size: 25),
+                                          title: Text(
+                                            'Feedback',
+                                            style: TextStyle(
+                                              fontSize: 20,
+                                              wordSpacing: 16,
+                                            ),
+                                          ),
+                                          selectedTileColor: Color(0xffead4d3),
+                                          onTap: () {
+                                            CambioColor(4);
+                                            setState(() {
+                                              tapu = !tapu;
+                                            });
+                                          }),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
-              // SizedBox(
-              //   height: 10,
-              // ),
-              Container(
-                padding: EdgeInsets.all(5),
-                margin: EdgeInsets.symmetric(horizontal: 0, vertical: 3),
-                decoration: BoxDecoration(
-                  color: Colors.transparent,
-                  borderRadius: BorderRadius.circular(30),
-                  border: Border.all(
-                    color: Colors.transparent,
-                  ),
-                ),
-                height: MediaQuery.of(context).size.height * .7,
-                width: MediaQuery.of(context).size.width * .7,
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      Container(
-                        width: MediaQuery.of(context).size.width * .72,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          color: _selind == 2 ? Color(0xffead4d3) : bef,
+            ),
+            Container(
+              margin: EdgeInsets.only(top: 7),
+              padding: EdgeInsets.all(8),
+              height: MediaQuery.of(context).size.height * .2,
+              width: MediaQuery.of(context).size.width,
+              decoration: BoxDecoration(
+                  color: Colors.grey[300],
+                  //     border: Border.all(color: Colors.grey, width: 4)
+                  borderRadius: BorderRadius.only(
+                    // topLeft: Radius.circular(30),
+                    // topRight: Radius.circular(30),
+                    bottomLeft: Radius.circular(30),
+                    bottomRight: Radius.circular(30),
+                  )),
+              child: Column(
+                children: [
+                  Container(
+                    width: MediaQuery.of(context).size.width * .72,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      color: _selind == 5 ? Color(0xffead4d3) : bef,
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: ListTile(
+                        shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(15),
                         ),
-                        child: ListTile(
-                          // subtitle: tapu == true ? Text('data') : Text(''),
-                          // isThreeLine: tapu,
-                          leading: _selind == 0
-                              ? Icon(Icons.favorite_rounded,
-                              color: Color(0xff985a56), size: 30)
-                              : Icon(Icons.favorite_outline_outlined,
-                              color: Color(0xffead4d3), size: 25),
-                          title: Text(
-                            'Favorites',
-                            style: TextStyle(
-                              fontSize: 23,
-                              wordSpacing: 16,
-                            ),
-                          ),
-                          tileColor: _selind == 0 ? Color(0xffead4d3) : bef,
-                          selectedTileColor: Color(0xffead4d3),
-                          onTap: () {
-                            CambioColor(0);
-                            setState(() {
-                              tapu = !tapu;
-                            });
-                          },
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15),
+                        leading: _selind == 5
+                            ? Icon(LineIcons.cog,
+                            color: Color(0xff985a56), size: 30)
+                            : Icon(LineIcons.cog,
+                            color: Color(0xff985a56), size: 25),
+                        title: Text(
+                          'Settings',
+                          style: TextStyle(
+                            fontSize: 20,
+                            wordSpacing: 16,
                           ),
                         ),
-                      ),
-                      SizedBox(
-                        height: 2,
-                      ),
-                      Container(
-                        width: MediaQuery.of(context).size.width * .72,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          color: _selind == 2 ? Color(0xffead4d3) : bef,
+                        tileColor: _selind == 5 ? Color(0xffead4d3) : bef,
+                        selectedTileColor: Color(0xffead4d3),
+                        onTap: () {
+                          CambioColor(5);
+                          setState(() {
+                            tapu = !tapu;
+                          });
+                        }),
+                  ),
+                  SizedBox(
+                    height: 2,
+                  ),
+                  Container(
+                    width: MediaQuery.of(context).size.width * .72,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      color: _selind == 6 ? Color(0xffead4d3) : bef,
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: ListTile(
+                        shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(15),
                         ),
-                        child: ListTile(
-                          // subtitle: Text('htrfh'),
-                          // isThreeLine: tapu,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15),
+                        leading: _selind == 6
+                            ? Icon(Icons.exit_to_app_rounded,
+                            color: Color(0xff985a56), size: 30)
+                            : Icon(Icons.exit_to_app_outlined,
+                            color: Color(0xff985a56), size: 25),
+                        title: Text(
+                          'Logout',
+                          style: TextStyle(
+                            fontSize: 20,
+                            wordSpacing: 16,
                           ),
-                          leading: _selind == 1
-                              ? Icon(Icons.color_lens_rounded,
-                              color: Color(0xff985a56), size: 30)
-                              : Icon(Icons.color_lens_outlined,
-                              color: Color(0xffead4d3), size: 25),
-                          title: Text(
-                            'Theme',
-                            style: TextStyle(
-                              fontSize: 20,
-                            ),
-                          ),
-                          tileColor: _selind == 1 ? Color(0xffead4d3) : bef,
-                          selectedTileColor: Color(0xffead4d3),
-                          onTap: () => CambioColor(1),
                         ),
-                      ),
-                      Divider(
-                        color: Colors.transparent,
-                      ),
-                      Container(
-                        padding: EdgeInsets.all(8),
-                        height: MediaQuery.of(context).size.height * .24,
-                        width: MediaQuery.of(context).size.width - 4,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(30)),
-                        child: Column(
-                          children: [
-                            Container(
-                              width: MediaQuery.of(context).size.width * .72,
-                              height: 50,
-                              decoration: BoxDecoration(
-                                color: _selind == 2 ? Color(0xffead4d3) : Colors.grey[100],
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              child: ListTile(
-                                  leading: _selind == 2
-                                      ? Icon(Icons.people_outline_rounded,
-                                      color: Color(0xff985a56), size: 30)
-                                      : Icon(Icons.people_outline_outlined,
-                                      color: Color(0xffead4d3), size: 25),
-                                  title: Text(
-                                    'Contestants',
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                      wordSpacing: 16,
-                                    ),
-                                  ),
-                                  onTap: () {
-                                    CambioColor(2);
-                                    setState(() {
-                                      tapu = !tapu;
-                                    });
-                                  }),
-                            ),
-                            SizedBox(
-                              height: 4,
-                            ),
-                            Container(
-                              width: MediaQuery.of(context).size.width * .72,
-                              height: 50,
-                              decoration: BoxDecoration(
-                                color: _selind == 2 ? Color(0xffead4d3) : Colors.grey[100],
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              child: ListTile(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                leading: _selind == 3
-                                    ? Icon(Icons.question_answer_rounded,
-                                    color: Color(0xff985a56), size: 30)
-                                    : Icon(Icons.question_answer_outlined,
-                                    color: Color(0xffead4d3), size: 25),
-                                title: Text(
-                                  'FAQ',
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    wordSpacing: 16,
-                                  ),
-                                ),
-
-                                selectedTileColor: Color(0xffead4d3),
-                                onTap: () {
-                                  CambioColor(3);
-                                  setState(() {
-                                    tapu = !tapu;
-                                  });
-                                },
-                              ),
-                            ),
-                            SizedBox(
-                              height: 4,
-                            ),
-                            Container(
-                              width: MediaQuery.of(context).size.width * .72,
-                              height: 50,
-                              decoration: BoxDecoration(
-                                color: _selind == 2 ? Color(0xffead4d3) : Colors.grey[100],
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              child: ListTile(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(15),
-                                  ),
-                                  leading: _selind == 4
-                                      ? Icon(Icons.feedback_rounded,
-                                      color: Color(0xff985a56), size: 30)
-                                      : Icon(Icons.feedback_outlined,
-                                      color: Color(0xffead4d3), size: 25),
-                                  title: Text(
-                                    'Feedback',
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                      wordSpacing: 16,
-                                    ),
-                                  ),
-
-                                  selectedTileColor: Color(0xffead4d3),
-                                  onTap: () {
-                                    CambioColor(4);
-                                    setState(() {
-                                      tapu = !tapu;
-                                    });
-                                  }),
-                            ),
-                          ],
-                        ),
-                      ),
-                      // Divider(
-                      //   color: Colors.transparent,
-                      // ),
-                      Container(
-                        margin: EdgeInsets.only(top: 4),
-                        padding: EdgeInsets.all(8),
-                        height: MediaQuery.of(context).size.height * .2,
-                        width: MediaQuery.of(context).size.width - 4,
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.grey, width: 4)),
-                        child: Column(
-                          children: [
-                            Container(
-                              width: MediaQuery.of(context).size.width * .72,
-                              height: 50,
-                              decoration: BoxDecoration(
-                                color: _selind == 2 ? Color(0xffead4d3) : bef,
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              child: ListTile(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(15),
-                                  ),
-                                  leading: _selind == 5
-                                      ? Icon(Icons.build_rounded,
-                                      color: Color(0xff985a56), size: 30)
-                                      : Icon(Icons.build_outlined,
-                                      color: Color(0xffead4d3), size: 25),
-                                  title: Text(
-                                    'Settings',
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                      wordSpacing: 16,
-                                    ),
-                                  ),
-                                  tileColor:
-                                  _selind == 5 ? Color(0xffead4d3) : bef,
-                                  selectedTileColor: Color(0xffead4d3),
-                                  onTap: () {
-                                    CambioColor(5);
-                                    setState(() {
-                                      tapu = !tapu;
-                                    });
-                                  }),
-                            ),
-                            SizedBox(
-                              height: 2,
-                            ),
-                            Container(
-                              width: MediaQuery.of(context).size.width * .72,
-                              height: 50,
-                              decoration: BoxDecoration(
-                                color: _selind == 2 ? Color(0xffead4d3) : bef,
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              child: ListTile(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(15),
-                                  ),
-                                  leading: _selind == 6
-                                      ? Icon(Icons.exit_to_app_rounded,
-                                      color: Color(0xff985a56), size: 30)
-                                      : Icon(Icons.exit_to_app_outlined,
-                                      color: Color(0xffead4d3), size: 25),
-                                  title: Text(
-                                    'Logout',
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                      wordSpacing: 16,
-                                    ),
-                                  ),
-                                  tileColor:
-                                  _selind == 6 ? Color(0xffead4d3) : bef,
-                                  selectedTileColor: Color(0xffead4d3),
-                                  onTap: () {
-                                    CambioColor(6);
-                                    setState(() {
-                                      tapu = !tapu;
-                                    });
-                                  }),
-                            ),
-                          ],
-                        ),
-                      )
-                    ],
+                        onTap: () {
+                          CambioColor(6);
+                          setState(() {
+                            tapu = !tapu;
+                          });
+                        }),
                   ),
-                ),
+                ],
               ),
-            ],
-          ),
+            )
+          ],
         ),
-        //),
-      );
+      ),
+    );
   }
 }
 
