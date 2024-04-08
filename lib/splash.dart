@@ -19,8 +19,14 @@ class _SplashScreenState extends State<SplashScreen> {
     InitialRoute();
   }
 
+  @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
+  }
+
   InitialRoute() async {
-    await Future.delayed(Duration(seconds: 1), () {});
+    await Future.delayed(Duration(seconds: 3), () {});
     Navigator.pushReplacement(
         context, MaterialPageRoute(builder: (_) => CarPol()));
   }
@@ -43,7 +49,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   style: TextStyle(
                     fontSize: 35,
                     fontFamily: 'Lobster',
-                    color: Color(0xff985a56),
+                    color: Theme.of(context).colorScheme.primary,
                   ),
                 ),
               ),
@@ -86,7 +92,7 @@ class _SplashScreenState extends State<SplashScreen> {
                       fontSize: 50,
                       fontFamily: 'Anta',
                       letterSpacing: 6,
-                      color: Color(0xff985a56),
+                      color: Theme.of(context).colorScheme.primary,
                     ),
                   )),
             ],

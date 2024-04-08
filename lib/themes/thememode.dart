@@ -12,7 +12,8 @@ ThemeData lightTheme = ThemeData(
   brightness: Brightness.light,
   colorScheme: ColorScheme.light(
     background: Colors.grey[200]!,
-    primary: Colors.white,
+    primary: Color(0xff985a56),
     secondary: Colors.white70,
+    tertiary: Colors.grey[200]!,
   ),
 );

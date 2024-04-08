@@ -56,7 +56,7 @@ class _CarPolState extends State<CarPol> {
                   title: Text(
                     'Home',
                     style: TextStyle(
-                        color: Color(0xff985a56),
+                        color: Theme.of(context).colorScheme.primary,
                         fontSize: 40,
                         letterSpacing: 3,
                         fontWeight: FontWeight.bold),
@@ -79,7 +79,7 @@ class _CarPolState extends State<CarPol> {
                         icon: Icon(
                           LineIcons.user,
                           size: 35,
-                          color: Color(0xff985a56),
+                          color: Theme.of(context).colorScheme.primary,
                         )),
                     SizedBox(
                       width: 15,
@@ -94,7 +94,7 @@ class _CarPolState extends State<CarPol> {
                           icon: Icon(
                             size: 35,
                             LineIcons.bell,
-                            color: Color(0xff985a56),
+                            color: Theme.of(context).colorScheme.primary,
                           )),
                     ),
                     SizedBox(
@@ -102,7 +102,7 @@ class _CarPolState extends State<CarPol> {
                     )
                   ],
                   centerTitle: true,
-                  backgroundColor: Colors.grey[200],
+                  backgroundColor: Theme.of(context).colorScheme.background,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(0),
@@ -116,7 +116,7 @@ class _CarPolState extends State<CarPol> {
                           'Explore',
                           style: TextStyle(
                               fontFamily: 'Anta',
-                              color: Color(0xff985a56),
+                              color: Theme.of(context).colorScheme.primary,
                               fontSize: 20,
                               letterSpacing: 7,
                               fontWeight: FontWeight.bold),
@@ -133,7 +133,7 @@ class _CarPolState extends State<CarPol> {
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(20),
                         topRight: Radius.circular(20)),
-                    color: Colors.grey[200],
+                    color: Theme.of(context).colorScheme.background,
                   ),
                   child: SingleChildScrollView(
                     child: Column(
@@ -153,7 +153,7 @@ class _CarPolState extends State<CarPol> {
                               style: TextStyle(
                                 inherit: false,
                                 fontSize: 30,
-                                color: Color(0xff985a56),
+                                color: Theme.of(context).colorScheme.primary,
                               ),
                             ),
                             SizedBox(
@@ -173,12 +173,12 @@ class _CarPolState extends State<CarPol> {
                           width: MediaQuery.of(context).size.width - 16,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
-                              color: Colors.white70),
+                              color: Theme.of(context).colorScheme.secondary),
                           child: Text(
                               style: TextStyle(
                                 // fontFamily: 'BodoniModa',
                                   fontSize: 18,
-                                  color: Colors.black87,
+                                  color: Theme.of(context).colorScheme.primary,
                                   fontWeight: FontWeight.w400),
                               'De juls is a versatile mobile application designed to\n' +
                                   "Whether you're a seasoned user or new to Dejuls," +
@@ -198,7 +198,8 @@ class _CarPolState extends State<CarPol> {
                               style: TextStyle(
                                 inherit: false,
                                 fontSize: 30,
-                                color: Color(0xff985a56),
+                                color: Theme.of(context).colorScheme.primary,
+                                //Color(0xff985a56),
                               ),
                             ),
                           ],
@@ -213,7 +214,7 @@ class _CarPolState extends State<CarPol> {
                           height: 150,
                           width: MediaQuery.of(context).size.width - 16,
                           decoration: BoxDecoration(
-                            color: Colors.white70,
+                            color: Theme.of(context).colorScheme.secondary,
                             borderRadius: BorderRadius.circular(20),
                             // boxShadow: [
                             //   BoxShadow(
@@ -252,7 +253,8 @@ class _CarPolState extends State<CarPol> {
                               style: TextStyle(
                                 inherit: false,
                                 fontSize: 30,
-                                color: Color(0xff985a56),
+                                color: Theme.of(context).colorScheme.primary,
+                                //Color(0xff985a56),
                               ),
                             ),
                           ],
@@ -268,13 +270,14 @@ class _CarPolState extends State<CarPol> {
                           width: MediaQuery.of(context).size.width,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
-                            color: Color(0xffead4d3).withOpacity(0.7),
+                            color: Theme.of(context).colorScheme.secondary,
+                            // Color(0xffead4d3).withOpacity(0.7),
                           ),
                           child: Text(
                               style: TextStyle(
                                 // fontFamily: 'BodoniModa',
                                 fontSize: 18,
-                                color: Color(0xff985a56),
+                                color: Theme.of(context).colorScheme.primary,
                                 fontWeight: FontWeight.w100,
                               ),
                               'Simplify your [task/activity] with our user-friendly interface' +
@@ -290,7 +293,9 @@ class _CarPolState extends State<CarPol> {
                           width: MediaQuery.of(context).size.width - 2,
                           padding: EdgeInsets.all(8),
                           decoration: BoxDecoration(
-                            color: Color(0xffead4d3).withOpacity(0.4),
+                            color: Theme.of(context).colorScheme.secondary,
+
+                            //Color(0xffead4d3).withOpacity(0.4),
                             borderRadius: BorderRadius.circular(10),
                           ),
                           margin: EdgeInsets.symmetric(
@@ -300,7 +305,8 @@ class _CarPolState extends State<CarPol> {
                               'Happening now',
                               style: TextStyle(
                                 fontSize: 25,
-                                color: Color(0xffa84f48),
+                                color: Theme.of(context).colorScheme.primary,
+
                                 // decoration: TextDecoration.none,
                               ),
                             ),
@@ -322,7 +328,8 @@ class _CarPolState extends State<CarPol> {
                           height: 330,
                           margin: EdgeInsets.symmetric(vertical: 10),
                           decoration: BoxDecoration(
-                            color: Colors.red,
+                            color: Theme.of(context).colorScheme.tertiary,
+
                             // color: const Color(0xffead4d3),
                             // borderRadius: BorderRadius.only(
                             //   topLeft: Radius.circular(20),
@@ -401,16 +408,22 @@ class _CarPolState extends State<CarPol> {
                                     left: 3, right: 3, bottom: 2),
                                 padding: EdgeInsets.all(8),
                                 decoration: BoxDecoration(
-                                    color: Colors.grey[200],
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .tertiary,
                                     borderRadius: BorderRadius.circular(10),
                                     boxShadow: [
                                       BoxShadow(
-                                          color: Colors.white,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .secondary,
                                           offset: Offset(5, -5),
                                           spreadRadius: 3,
                                           blurRadius: .1),
                                       BoxShadow(
-                                          color: Colors.white,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .secondary,
                                           offset: Offset(-5, 5),
                                           spreadRadius: 3,
                                           blurRadius: 0.1),
@@ -452,7 +465,7 @@ class _CarPolState extends State<CarPol> {
                           height: MediaQuery.of(context).size.height * .4,
                           width: MediaQuery.of(context).size.width,
                           decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: Theme.of(context).colorScheme.primary,
                               borderRadius: BorderRadius.only(
                                 topLeft: Radius.circular(30),
                                 topRight: Radius.circular(30),

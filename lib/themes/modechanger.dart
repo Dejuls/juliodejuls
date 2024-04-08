@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:juliodejuls/exporT.dart';
 
 class ThemeProvider with ChangeNotifier {
-  ThemeData _cambiar = lightTheme;
+  ThemeData _cambiar = darkTheme;
   ThemeData get themeData => _cambiar;
   set themeData(ThemeData themeData) {
-    themeData = _cambiar;
+    _cambiar = themeData;
     notifyListeners();
   }
 
   void toggleMode() {
-    _cambiar == lightTheme ? darkTheme : lightTheme;
+    _cambiar = _cambiar == darkTheme ? lightTheme : darkTheme;
+    notifyListeners();
   }
 }
