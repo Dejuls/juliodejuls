@@ -8,6 +8,7 @@ import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/services.dart';
 import 'package:juliodejuls/exporT.dart';
+import 'package:provider/provider.dart';
 
 class PolNames {
   final String name;
@@ -43,6 +44,7 @@ List<PolNames> nms = [
 int jid = 0;
 int index = nms.length;
 bool isTapped = true;
+bool isChanged = false;
 
 class Nav extends StatefulWidget {
   const Nav({Key? key}) : super(key: key);
@@ -380,6 +382,12 @@ class _SideNavBarState extends State<SideNavBar> {
     });
   }
 
+  void ModeNow() {
+    setState(() {
+      isChanged = !isChanged;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -420,11 +428,13 @@ class _SideNavBarState extends State<SideNavBar> {
                               accountEmail: Text('data'),
                               currentAccountPicture: ClipRRect(child: AvaTar()),
                               decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                  image: DecorationImage(
-                                      image: AssetImage('assets/images/22.PNG'),
-                                      fit: BoxFit.cover,
-                                      opacity: 0.2)),
+                                color: Colors.grey[300],
+                                borderRadius: BorderRadius.circular(20),
+                                // image: DecorationImage(
+                                //     image: AssetImage('assets/images/22.PNG'),
+                                //     fit: BoxFit.cover,
+                                //     opacity: 0.2)
+                              ),
                             ),
                           ),
                           // Positioned(
@@ -530,6 +540,19 @@ class _SideNavBarState extends State<SideNavBar> {
                                           borderRadius:
                                           BorderRadius.circular(15),
                                         ),
+                                        trailing: Switch(
+                                            value: Provider.of<ThemeProvider>(
+                                                context)
+                                                .themeData ==
+                                                darkTheme,
+                                            activeColor: Colors.green,
+                                            inactiveThumbColor: Colors.blue,
+                                            onChanged: (value) {
+                                              Provider.of<ThemeProvider>(
+                                                  context,
+                                                  listen: false)
+                                                  .toggleMode();
+                                            }),
                                         leading: _selind == 1
                                             ? Icon(Icons.color_lens_rounded,
                                             color: Color(0xff985a56),

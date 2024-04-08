@@ -12,5 +12,5 @@ export 'vot.dart';
 export 'profile.dart';
 export 'curved.dart';
 export 'splash.dart';
-export 'themes/dark.dart';
-export 'themes/light.dart';
+export 'themes/thememode.dart';
+export 'themes/modechanger.dart';
