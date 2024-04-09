@@ -79,7 +79,7 @@ class _CarPolState extends State<CarPol> {
                         icon: Icon(
                           LineIcons.user,
                           size: 35,
-                          color: Theme.of(context).colorScheme.primary,
+                          color: Color(0xff985a56),
                         )),
                     SizedBox(
                       width: 15,
@@ -94,7 +94,7 @@ class _CarPolState extends State<CarPol> {
                           icon: Icon(
                             size: 35,
                             LineIcons.bell,
-                            color: Theme.of(context).colorScheme.primary,
+                            color: Color(0xff985a56),
                           )),
                     ),
                     SizedBox(
@@ -102,7 +102,7 @@ class _CarPolState extends State<CarPol> {
                     )
                   ],
                   centerTitle: true,
-                  backgroundColor: Theme.of(context).colorScheme.background,
+                  backgroundColor: Theme.of(context).colorScheme.inverseSurface,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(0),
@@ -159,7 +159,11 @@ class _CarPolState extends State<CarPol> {
                             SizedBox(
                               width: 10,
                             ),
-                            for (int i = 1; i < 4; ++i) Icon(LineIcons.star)
+                            for (int i = 1; i < 4; ++i)
+                              Icon(
+                                LineIcons.star,
+                                color: Color(0xff985a56),
+                              )
                           ],
                         ),
                         SizedBox(
@@ -178,7 +182,7 @@ class _CarPolState extends State<CarPol> {
                               style: TextStyle(
                                 // fontFamily: 'BodoniModa',
                                   fontSize: 18,
-                                  color: Theme.of(context).colorScheme.primary,
+                                  color: Theme.of(context).colorScheme.scrim,
                                   fontWeight: FontWeight.w400),
                               'De juls is a versatile mobile application designed to\n' +
                                   "Whether you're a seasoned user or new to Dejuls," +
@@ -234,6 +238,7 @@ class _CarPolState extends State<CarPol> {
                                 fontSize: 18,
                                 // fontFamily: 'BodoniModa',
                                 fontWeight: FontWeight.w400,
+                                color: Theme.of(context).colorScheme.scrim,
                               ),
                               'Feature 1: Brief description of feature 1 \tand its benefit\n' +
                                   'Feature 2: Brief description of feature 2 and its benefit\n' +
@@ -277,7 +282,7 @@ class _CarPolState extends State<CarPol> {
                               style: TextStyle(
                                 // fontFamily: 'BodoniModa',
                                 fontSize: 18,
-                                color: Theme.of(context).colorScheme.primary,
+                                color: Theme.of(context).colorScheme.scrim,
                                 fontWeight: FontWeight.w100,
                               ),
                               'Simplify your [task/activity] with our user-friendly interface' +
@@ -465,7 +470,7 @@ class _CarPolState extends State<CarPol> {
                           height: MediaQuery.of(context).size.height * .4,
                           width: MediaQuery.of(context).size.width,
                           decoration: BoxDecoration(
-                              color: Theme.of(context).colorScheme.primary,
+                              color: Theme.of(context).colorScheme.secondary,
                               borderRadius: BorderRadius.only(
                                 topLeft: Radius.circular(30),
                                 topRight: Radius.circular(30),

@@ -133,10 +133,10 @@ class _GNavBarState extends State<GNavBar> {
       height: 60,
       child: GNav(
         gap: 8,
-        tabBackgroundColor: Color(0xffe8bab7),
+        tabBackgroundColor: Theme.of(context).colorScheme.tertiaryContainer,
         // backgroundColor: const Color(0xffead4d3),
         activeColor: Color(0xff985a56),
-        color: Color(0xff985a56),
+        color: Theme.of(context).colorScheme.primary,
         padding: EdgeInsets.all(12),
         tabs: [
           GButton(
