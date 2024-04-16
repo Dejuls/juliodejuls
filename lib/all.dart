@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:juliodejuls/sides.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
@@ -45,6 +46,8 @@ int jid = 0;
 int index = nms.length;
 bool isTapped = true;
 bool isChanged = false;
+int _selind = -1;
+bool tapu = false;
 
 class Nav extends StatefulWidget {
   const Nav({Key? key}) : super(key: key);
@@ -373,8 +376,6 @@ class SideNavBar extends StatefulWidget {
 }
 
 class _SideNavBarState extends State<SideNavBar> {
-  int _selind = -1;
-  bool tapu = false;
   Color bef = Colors.white;
   void CambioColor(int index) {
     setState(() {
@@ -382,10 +383,9 @@ class _SideNavBarState extends State<SideNavBar> {
     });
   }
 
-  void ModeNow() {
-    setState(() {
-      isChanged = !isChanged;
-    });
+  void signOff() {
+    final _checkstate2 = Provider.of<LoggedinOrNot>(context, listen: false);
+    _checkstate2.logOff();
   }
 
   @override
@@ -406,7 +406,7 @@ class _SideNavBarState extends State<SideNavBar> {
               height: MediaQuery.of(context).size.height / 1.35,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(0),
-                color: Colors.grey[200],
+                color: Theme.of(context).colorScheme.secondary,
               ),
               child: SingleChildScrollView(
                 physics: NeverScrollableScrollPhysics(),
@@ -437,23 +437,6 @@ class _SideNavBarState extends State<SideNavBar> {
                               ),
                             ),
                           ),
-                          // Positioned(
-                          //   top: 5,
-                          //   left: 140,
-                          //   child: Container(
-                          //       height: 130,
-                          //       width: 140,
-                          //       decoration: BoxDecoration(
-                          //         borderRadius: BorderRadius.circular(20),
-                          //         color: Colors.pinkAccent,
-                          //       ),
-                          //       child: Align(
-                          //         alignment: Alignment(-1, -1),
-                          //         child: AvaTar(
-                          //           radias: 40,
-                          //         ),
-                          //       )),
-                          // ),
                         ],
                       ),
                     ),
@@ -461,11 +444,9 @@ class _SideNavBarState extends State<SideNavBar> {
                       padding: EdgeInsets.all(5),
                       margin: EdgeInsets.symmetric(horizontal: 0, vertical: 3),
                       decoration: BoxDecoration(
-                        color: Colors.transparent,
+                        color: Theme.of(context).colorScheme.surfaceVariant,
                         borderRadius: BorderRadius.circular(30),
-                        border: Border.all(
-                          color: Colors.transparent,
-                        ),
+                        border: Border.all(color: Colors.transparent),
                       ),
                       height: MediaQuery.of(context).size.height * .7,
                       width: MediaQuery.of(context).size.width,
@@ -476,49 +457,55 @@ class _SideNavBarState extends State<SideNavBar> {
                             Container(
                               height: 115,
                               padding: EdgeInsets.all(5),
-                              color: Colors.grey[200],
+                              // color:
+                              //     Theme.of(context).colorScheme.inversePrimary,
                               child: SingleChildScrollView(
                                 physics: const NeverScrollableScrollPhysics(),
                                 child: Column(
                                   children: [
-                                    Container(
-                                      width: MediaQuery.of(context).size.width *
-                                          .72,
-                                      height: 50,
-                                      decoration: BoxDecoration(
-                                        color: _selind == 0
-                                            ? Color(0xffead4d3)
-                                            : bef,
-                                        borderRadius: BorderRadius.circular(15),
-                                      ),
-                                      child: ListTile(
-                                        leading: _selind == 0
-                                            ? Icon(Icons.favorite_rounded,
-                                            color: Color(0xff985a56),
-                                            size: 30)
-                                            : Icon(
-                                            Icons.favorite_outline_outlined,
-                                            color: Color(0xff985a56),
-                                            size: 25),
-                                        title: Text(
-                                          'Favorites',
-                                          style: TextStyle(
-                                            fontSize: 23,
-                                            wordSpacing: 16,
-                                          ),
-                                        ),
-                                        selectedTileColor: Color(0xffead4d3),
-                                        onTap: () {
-                                          CambioColor(0);
-                                          setState(() {
-                                            tapu = !tapu;
-                                          });
-                                        },
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                          BorderRadius.circular(15),
-                                        ),
-                                      ),
+                                    // Container(
+                                    //   width: MediaQuery.of(context).size.width *
+                                    //       .72,
+                                    //   height: 50,
+                                    //   decoration: BoxDecoration(
+                                    //     color: _selind == 0
+                                    //         ? Color(0xffead4d3)
+                                    //         : bef,
+                                    //     borderRadius: BorderRadius.circular(15),
+                                    //   ),
+                                    //   child: ListTile(
+                                    //     leading: _selind == 0
+                                    //         ? Icon(Icons.favorite_rounded,
+                                    //             color: Color(0xff985a56),
+                                    //             size: 30)
+                                    //         : Icon(
+                                    //             Icons.favorite_outline_outlined,
+                                    //             color: Color(0xff985a56),
+                                    //             size: 25),
+                                    //     title: Text(
+                                    //       'Favorites',
+                                    //       style: TextStyle(
+                                    //         fontSize: 23,
+                                    //         wordSpacing: 16,
+                                    //       ),
+                                    //     ),
+                                    //     selectedTileColor: Color(0xffead4d3),
+                                    //     onTap: () {
+                                    //       CambioColor(0);
+                                    //       setState(() {
+                                    //         tapu = !tapu;
+                                    //       });
+                                    //     },
+                                    //     shape: RoundedRectangleBorder(
+                                    //       borderRadius:
+                                    //           BorderRadius.circular(15),
+                                    //     ),
+                                    //   ),
+                                    // ),
+                                    SideMenuItem(
+                                      selno: 0,
+                                      word: 'Favorites',
+                                      index: 0,
                                     ),
                                     SizedBox(
                                       height: 2,
@@ -529,8 +516,12 @@ class _SideNavBarState extends State<SideNavBar> {
                                       height: 50,
                                       decoration: BoxDecoration(
                                         color: _selind == 1
-                                            ? Color(0xffead4d3)
-                                            : bef,
+                                            ? Theme.of(context)
+                                            .colorScheme
+                                            .error
+                                            : Theme.of(context)
+                                            .colorScheme
+                                            .errorContainer,
                                         borderRadius: BorderRadius.circular(15),
                                       ),
                                       child: ListTile(
@@ -545,7 +536,7 @@ class _SideNavBarState extends State<SideNavBar> {
                                                 context)
                                                 .themeData ==
                                                 darkTheme,
-                                            activeColor: Colors.green,
+                                            activeColor: Colors.black,
                                             inactiveThumbColor: Colors.blue,
                                             onChanged: (value) {
                                               Provider.of<ThemeProvider>(
@@ -588,7 +579,7 @@ class _SideNavBarState extends State<SideNavBar> {
                               height: MediaQuery.of(context).size.height * .275,
                               width: MediaQuery.of(context).size.width,
                               decoration: BoxDecoration(
-                                  color: Colors.white60,
+                                  color: Theme.of(context).colorScheme.error,
                                   borderRadius: BorderRadius.circular(0)),
                               child: SingleChildScrollView(
                                 physics: NeverScrollableScrollPhysics(),
@@ -729,7 +720,8 @@ class _SideNavBarState extends State<SideNavBar> {
               height: MediaQuery.of(context).size.height * .2,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
-                  color: Colors.grey[300],
+                  color: Theme.of(context).colorScheme.inverseSurface,
+                  //Colors.grey[300],
                   //     border: Border.all(color: Colors.grey, width: 4)
                   borderRadius: BorderRadius.only(
                     // topLeft: Radius.circular(30),
@@ -802,6 +794,7 @@ class _SideNavBarState extends State<SideNavBar> {
                           setState(() {
                             tapu = !tapu;
                           });
+                          signOff();
                         }),
                   ),
                 ],

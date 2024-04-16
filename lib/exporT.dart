@@ -14,3 +14,5 @@ export 'curved.dart';
 export 'splash.dart';
 export 'themes/thememode.dart';
 export 'themes/modechanger.dart';
+export 'auth/check.dart';
+export 'auth/loggedornot.dart';
